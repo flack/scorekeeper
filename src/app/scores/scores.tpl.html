@@ -1,0 +1,75 @@
+<div class="container">
+
+<h1>Scores</h1>
+
+<alert ng-hide="$storage.players" type="danger">You have to <a class="alert-link" ui-sref="players">add some players</a> for this to work!</alert>
+<alert ng-show="winners && winners.length > 1" class="clearfix"
+type="success">It's a tie! Winners are {{winners | playernames}}</alert>
+<alert ng-show="winners && winners.length == 1" class="clearfix"
+type="success">{{winners[0] | playername}} wins!</alert>
+
+<div ng-show="$storage.players" class="toolbar-right">
+  <button class="btn btn-default" type="button" ng-hide="running || !$storage.finished" ng-click="resume()">
+  <span class="fa fa-history"></span> Resume
+  </button>
+  <button class="btn btn-primary" type="button" ng-hide="running" ng-click="start()">
+  <span class="fa fa-caret-square-o-right"></span> Start<span ng-show="$storage.finished"> New</span>
+  </button>
+  <button class="btn btn-danger" type="button" ng-show="running" ng-click="abort()">
+  <span class="fa fa-trash-o"></span> Abort
+  </button>
+  <button class="btn btn-success" type="button"
+  ng-show="running" ng-click="finish()">
+  <span class="fa fa-check-square-o"></span> Finish
+  </button>
+</div>
+<p ng-show="running">started <span am-time-ago="$storage.started"></span></p>
+
+<div class="scores-table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Round</th>
+        <th ng-repeat="player in $storage.players" ng-class="{success: winners.indexOf(player.id) != -1}">
+          {{player.name}}
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+    <tfoot>
+      <tr>
+        <th>Totals</th>
+        <th class="totals number" ng-repeat="player in $storage.players" ng-class="{success: winners.indexOf(player.id) != -1}">
+          {{totals[player.id]}}
+          </th>
+          <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+      <tr
+        ng-repeat="row in $storage.rows"
+        ng-class="{active: $last && running, completed: !$last || !running}">
+        <th>{{$index + 1}}</th>
+        <td
+          class="number"
+          ng-repeat="player in $storage.players"
+          ng-class="{success: (!$parent.$last || !running) && is_max(row[player.id], row)}">
+          <form ng-submit="new_row()">
+          <input
+          class="score-input"
+          type="tel"
+          select-on-focus
+          focus-me="$parent.$last && $first && focus_input"
+          ng-model="row[player.id]"
+          ng-change="update_totals(player.id)"
+          ng-disabled="$storage.finished">
+          </form>
+          </td>
+          <td><button type="button" class="btn btn-success" ng-hide="!running || !$last"
+            ng-click="new_row()"><i class="fa fa-plus"></i></button></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+<h1>Manage Players</h1>
+<p class="show-after-animation" ng-show="$storage.players.length == 0">No players defined</p>
+<div ui-sortable ng-model="$storage.players">
+<div class="form-group delete-animation" ng-repeat="player in $storage.players">
+<div class="input-group">
+  <span class="input-group-btn">
+  <a class="btn btn-default"><i class="fa fa-sort"></i></a>
+  </span>
+  <input type="text" class="form-control" placeholder="enter player's name" ng-model="player.name" ng-change="update_player(player)">
+  <span class="input-group-btn">
+  <button class="btn btn-danger" type="button"
+  ng-click="remove_player(player)"><span title="Remove"><i class="fa fa-trash-o"></i></a></span></button>
+  </span>
+</div>
+</div>
+</div>
+<h2>Add Player</h2>
+<form name="addPlayer" ng-submit="add_player(player)">
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="enter player's name" required ng-model="player.name">
+  <span class="input-group-btn">
+  <button class="btn btn-primary" type="submit"><span title="Remove"><i class="fa fa-plus"></i></span></button>
+  </span>
+</div>
+</form>
+</div>

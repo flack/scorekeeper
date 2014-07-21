@@ -1,0 +1,46 @@
+<script type="text/ng-template" id="confirm_delete.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Delete Game from {{game.started | amCalendar}}</h3>
+        </div>
+        <div class="modal-body">
+          <p>Players:</p>
+          <ul>
+            <li ng-repeat="player in game.players">
+            {{ player.name }} ({{game.totals[player.id]}} points)
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" ng-click="ok()"><i
+        class="fa fa-trash-o"></i> Delete</button>
+            <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+<div class="container">
+<h1>Games</h1>
+<div class="game-table delete-animation" ng-repeat="game in $storage.games">
+  <h3>{{game.started | amCalendar}}
+  <div class="toolbar-right">
+    <button class="btn btn-danger" ng-click="open($index)"><i
+    class="fa fa-trash-o"></i></button>
+    </div>
+  </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th ng-repeat="player in game.players">
+          {{player.name}}
+          </th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr>
+        <th ng-repeat="player in game.players">
+          {{game.totals[player.id]}}
+          </th>
+        </tr>
+      </tbody>
+  </table>
+</div>
+</div>

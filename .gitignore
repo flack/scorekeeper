@@ -1,0 +1,8 @@
+*.sw*
+*~
+build/
+node_modules/
+vendor/
+.project
+.settings
+.DS_Store
