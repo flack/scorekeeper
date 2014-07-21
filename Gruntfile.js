@@ -11,6 +11,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   var userConfig = require( './build.config.js' );
 
@@ -313,7 +314,14 @@ module.exports = function ( grunt ) {
           livereload: false
         }
       }
-    }
+    },
+
+      'gh-pages': {
+          options: {
+              base: 'bin'
+          },
+          src: ['**']
+      }
   };
 
   grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
