@@ -12,6 +12,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-appcache');
 
   var userConfig = require( './build.config.js' );
 
@@ -321,6 +322,15 @@ module.exports = function ( grunt ) {
               base: 'bin'
           },
           src: ['**']
+      },
+      appcache: {
+          options: {
+              basePath: 'bin'
+          },
+          all: {
+              dest: 'bin/manifest.appcache',
+              cache: 'bin/**'
+          }
       }
   };
 
@@ -339,7 +349,7 @@ module.exports = function ( grunt ) {
   ]);
 
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
   ]);
 
   function filterForJS ( files ) {
