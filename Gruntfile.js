@@ -359,7 +359,10 @@ module.exports = function ( grunt ) {
           },
           all: {
               dest: 'bin/manifest.appcache',
-              cache: 'bin/**'
+              cache: {
+                  patterns: ['bin/**'],
+                  literals: '<%= appcache_literals %>'
+              }
           }
       }
   };

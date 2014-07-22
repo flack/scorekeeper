@@ -81,4 +81,10 @@ module.exports = {
         'vendor/components-font-awesome/fonts/*'
     ]
   },
+
+    appcache_literals: [
+        'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css',
+        'http://ghbtns.com/github-btn.html?user=flack&amp;repo=scorekeeper&amp;type=watch&amp;count=true',
+        'https://platform.twitter.com/widgets/tweet_button.html?url=https%3A%2F%2Fflack.github.io%2Fscorekeeper&counturl=http%3A%2F%2Fflack.github.com%2Fscorekeeper&text=Check%20out%20%23scorekeeper%20-%20an%20awesome%20helper%20for%20board%20and%20card%20games%20%7C&hashtags=angularjs'
+    ]
 };

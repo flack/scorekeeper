@@ -13,7 +13,6 @@
   "dependencies": {
     "angular-moment": "~0.7.1",
     "angular-animate": "~1.2.20",
-    "jquery-ui-touch-punch": "*",
-    "components-font-awesome": "~4.1.0"
+    "jquery-ui-touch-punch": "*"
   }
 }
