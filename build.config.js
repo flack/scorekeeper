@@ -73,12 +73,10 @@ module.exports = {
         'vendor/ngstorage/ngStorage.min.js'
     ],
     css: [
-        'vendor/components-font-awesome/css/font-awesome.min.css'
     ],
     assets: [
     ],
     fonts: [
-        'vendor/components-font-awesome/fonts/*'
     ]
   },
 
