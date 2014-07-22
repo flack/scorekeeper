@@ -17,13 +17,13 @@ angular.module( 'ngScorekeeper.games', [
   });
 })
 
-.controller( 'GamesCtrl', function HomeController( $scope, $modal, $localStorage ) {
+.controller( 'GamesCtrl', ['$scope', '$modal', '$localStorage', function ( $scope, $modal, $localStorage ) {
     $scope.$storage = $localStorage.$default({games: []});
     $scope.open = function (index)
     {
         var modalInstance = $modal.open({
             templateUrl: 'confirm_delete.html',
-            controller: ModalInstanceCtrl,
+            controller: 'ModalInstanceCtrl',
             resolve: {
                 selected: function () {
                     return index;
@@ -40,18 +40,15 @@ angular.module( 'ngScorekeeper.games', [
             //@todo: Display message?
         });
     };
+}])
+.controller( 'ModalInstanceCtrl', ['$scope', '$modalInstance', 'selected', 'games', function ($scope, $modalInstance, selected, games) {
+    $scope.game = games[selected];
 
-    var ModalInstanceCtrl = function ($scope, $modalInstance, selected, games)
-    {
-        $scope.game = games[selected];
-
-        $scope.ok = function () {
-            $modalInstance.close(selected);
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
+    $scope.ok = function () {
+        $modalInstance.close(selected);
     };
 
-});
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+}]);
