@@ -76,6 +76,16 @@ module.exports = function ( grunt ) {
           }
        ]
       },
+      build_vendor_fonts: {
+        files: [
+          {
+            src: [ '<%= vendor_files.fonts %>' ],
+            dest: '<%= build_dir %>/',
+            cwd: '.',
+            expand: true
+          }
+       ]
+      },
       build_appjs: {
         files: [
           {
@@ -96,20 +106,41 @@ module.exports = function ( grunt ) {
           }
         ]
       },
-      compile_assets: {
-        files: [
-          {
-            src: [ '**' ],
-            dest: '<%= compile_dir %>/assets',
-            cwd: '<%= build_dir %>/assets',
-            expand: true
-          }
-        ]
-      }
+        build_vendor_css: {
+            files: [
+                {
+                    src: [ '<%= vendor_files.css %>' ],
+                    dest: '<%= build_dir %>/',
+                    cwd: '.',
+                    expand: true
+                }
+            ]
+        },
+        compile_vendorfonts: {
+            files: [
+                {
+                    src: [ '<%= vendor_files.fonts %>' ],
+                    dest: '<%= compile_dir %>/fonts/',
+                    cwd: '.',
+                    expand: true,
+                    flatten: true
+                }
+            ]
+        },
+        compile_assets: {
+            files: [
+                {
+                    src: [ '**' ],
+                    dest: '<%= compile_dir %>/assets',
+                    cwd: '<%= build_dir %>/assets',
+                    expand: true
+                }
+            ]
+        }
     },
 
     concat: {
-      build_css: {
+      compile_css: {
         src: [
           '<%= vendor_files.css %>',
           '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
@@ -243,7 +274,6 @@ module.exports = function ( grunt ) {
         dir: '<%= compile_dir %>',
         src: [
           '<%= concat.compile_js.dest %>',
-          '<%= vendor_files.css %>',
           '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
         ]
       }
@@ -285,7 +315,7 @@ module.exports = function ( grunt ) {
         files: [
           'src/assets/**/*'
         ],
-        tasks: [ 'copy:build_app_assets', 'copy:build_vendor_assets' ]
+        tasks: [ 'copy:build_app_assets', 'copy:build_vendor_assets', 'copy:build_vendor_fonts' ]
       },
 
       html: {
@@ -343,13 +373,13 @@ module.exports = function ( grunt ) {
 
   grunt.registerTask( 'build', [
     'clean', 'html2js', 'jshint', 'less:build',
-    'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
-    'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
+    'copy:build_app_assets', 'copy:build_vendor_fonts', 'copy:build_vendor_assets',
+    'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendor_css', 'index:build', 'karmaconfig',
     'karma:continuous'
   ]);
 
   grunt.registerTask( 'compile', [
-    'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
+    'less:compile', 'concat:compile_css', 'copy:compile_assets', 'copy:compile_vendorfonts', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
   ]);
 
   function filterForJS ( files ) {
