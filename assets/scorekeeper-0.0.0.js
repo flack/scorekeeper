@@ -1,5 +1,5 @@
 /**
- * scorekeeper - v0.0.0 - 2014-07-22
+ * scorekeeper - v0.0.0 - 2014-07-23
  * https://github.com/flack/scorekeeper
  *
  * Copyright (c) 2014 Andreas Flack
