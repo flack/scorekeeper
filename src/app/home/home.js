@@ -15,7 +15,6 @@ angular.module( 'ngScorekeeper.home', [
   });
 })
 
-.controller( 'HomeCtrl', function HomeController( $scope ) {
-})
-
-;
+.controller( 'HomeCtrl', function HomeController( $scope , $window) {
+    $scope.isonline = $window.navigator.onLine;
+});
