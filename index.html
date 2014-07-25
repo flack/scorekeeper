@@ -34,48 +34,35 @@
       <nav class="navbar navbar-static-top navbar-inverse">
         <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
-            ng-click="menuCollapsed = ! menuCollapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <div class="navbar-brand">
-            scorekeeper
+            <a href ui-sref="home">
+              scorekeeper
+            </a>
           </div>
         </div>
-        <div class="collapse navbar-collapse" collapse="menuCollapsed">
           <ul class="nav navbar-nav">
-            <li ui-sref-active="active">
-              <a href ui-sref="home">
-                <i class="fa fa-home"></i>
-                Home
-              </a>
-            </li>
             <li ui-sref-active="active">
               <a href ui-sref="players">
                 <i class="fa fa-user"></i>
-                Players
+                <span class="label">Players</span>
               </a>
             </li>
             <li ui-sref-active="active">
               <a href ui-sref="scores">
                 <i class="fa fa-pencil-square-o"></i>
-                Scores
+                <span class="label">Scores</span>
               </a>
             </li>
             <li ui-sref-active="active">
               <a href ui-sref="games">
                 <i class="fa fa-trophy"></i>
-                Games
+                <span class="label">Games</span>
               </a>
             </li>
           </ul>
-      </nav>
         </div>
+      </nav>
     </header>
-    </div>
 
     <main ui-view="main"></main>
 
