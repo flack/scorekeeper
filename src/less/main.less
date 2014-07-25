@@ -66,8 +66,32 @@ header {
 
 .navbar {
   margin-bottom: 0;
-  small {
-    font-size: 60%;
+  .nav li {
+       &.active .label {
+           color: @navbar-inverse-link-hover-color;
+       }
+       .label {
+           color: @navbar-inverse-color;
+       }
+       &:hover .label {
+           color: @navbar-inverse-link-hover-color;
+       }
+
+       @media (max-width: 450px) {
+        a {
+          text-align: center;
+          padding-top: 8px;
+          padding-bottom: 5px;
+          i {
+               font-size: 140%;
+          }
+          .label {
+               font-size: 70%;
+               display: block;
+               color: @navbar-inverse-color;
+           }
+         }
+       }
   }
 }
 
