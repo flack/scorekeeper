@@ -3,29 +3,10 @@
 <h1>Scores</h1>
 
 <alert ng-hide="$storage.players" type="danger">You have to <a class="alert-link" ui-sref="players">add some players</a> for this to work!</alert>
-<alert ng-show="winners && winners.length > 1" class="clearfix"
-type="success">It's a tie! Winners are {{winners | playernames}}</alert>
-<alert ng-show="winners && winners.length == 1" class="clearfix"
-type="success">{{winners[0] | playername}} wins!</alert>
 
-<div ng-show="$storage.players" class="toolbar-right">
-  <button class="btn btn-default" type="button" ng-hide="running || !$storage.finished" ng-click="resume()">
-  <span class="fa fa-history"></span> Resume
-  </button>
-  <button class="btn btn-primary" type="button" ng-hide="running" ng-click="start()">
-  <span class="fa fa-caret-square-o-right"></span> Start<span ng-show="$storage.finished"> New</span>
-  </button>
-  <button class="btn btn-danger" type="button" ng-show="running" ng-click="abort()">
-  <span class="fa fa-trash-o"></span> Abort
-  </button>
-  <button class="btn btn-success" type="button"
-  ng-show="running" ng-click="finish()">
-  <span class="fa fa-check-square-o"></span> Finish
-  </button>
-</div>
 <p ng-show="running">started <span am-time-ago="$storage.started"></span></p>
 
-<div class="scores-table">
+<div class="scores-table" ng-show="$storage.players">
   <table class="table">
     <thead>
       <tr>
@@ -71,5 +52,25 @@ type="success">{{winners[0] | playername}} wins!</alert>
       </tbody>
   </table>
 </div>
+
+<alert ng-show="winners && winners.length > 1" class="clearfix"
+type="success">It's a tie! Winners are {{winners | playernames}}</alert>
+<alert ng-show="winners && winners.length == 1" class="clearfix"
+type="success">{{winners[0] | playername}} wins!</alert>
+
+<div ng-show="$storage.players" class="toolbar-right">
+  <button class="btn btn-default" type="button" ng-hide="running || !$storage.finished" ng-click="resume()">
+  <span class="fa fa-history"></span> Resume
+  </button>
+  <button class="btn btn-primary" type="button" ng-hide="running" ng-click="start()">
+  <span class="fa fa-caret-square-o-right"></span> Start<span ng-show="$storage.finished"> New</span>
+  </button>
+  <button class="btn btn-danger" type="button" ng-show="running" ng-click="abort()">
+  <span class="fa fa-trash-o"></span> Abort
+  </button>
+  <button class="btn btn-success" type="button"
+  ng-show="running" ng-click="finish()">
+  <span class="fa fa-check-square-o"></span> Finish
+  </button>
 </div>
 </div>
