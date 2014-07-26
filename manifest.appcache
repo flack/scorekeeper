@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 1 - 2014-07-25T22:04:48.676Z
+# rev 1 - 2014-07-26T10:29:10.383Z
 
 CACHE:
 assets/apple-touch-icon-120x120.png
@@ -8,8 +8,8 @@ assets/apple-touch-icon-76x76.png
 assets/apple-touch-icon.png
 assets/favicon.png
 assets/home-bg.jpg
-assets/scorekeeper-0.0.1.css
-assets/scorekeeper-0.0.1.js
+assets/scorekeeper-0.0.2.css
+assets/scorekeeper-0.0.2.js
 assets/scorekeeper.jpg
 index.html
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
