@@ -67,17 +67,17 @@ header {
 .navbar {
   margin-bottom: 0;
   .nav li {
-       &.active .label {
+       &.active .nav-label {
            color: @navbar-inverse-link-hover-color;
        }
        .label {
            color: @navbar-inverse-color;
        }
-       &:hover .label {
+       &:hover .nav-label {
            color: @navbar-inverse-link-hover-color;
        }
 
-       @media (max-width: 450px) {
+       @media (max-width: 420px) {
         a {
           text-align: center;
           padding-top: 8px;
@@ -85,23 +85,17 @@ header {
           i {
                font-size: 140%;
           }
-          .label {
+          .nav-label {
                font-size: 70%;
                display: block;
                color: @navbar-inverse-color;
            }
          }
        }
-       @media (max-width: 370px) {
-        a {
-          padding-left: 8px;
-          padding-right: 8px;
-        }
-      }
        @media (max-width: 330px) {
         a {
-          padding-left: 6px;
-          padding-right: 6px;
+          padding-left: 13px;
+          padding-right: 13px;
         }
       }
   }
