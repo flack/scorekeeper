@@ -20,7 +20,7 @@
 <div class="container">
 <h1>Games</h1>
 <div class="game-table delete-animation" ng-repeat="game in $storage.games">
-  <h3>{{game.started | amCalendar}}
+  <h3>{{game.title || 'Untitled Game'}} <small>{{game.started | amCalendar}}</small>
   <div class="toolbar-right">
     <button class="btn btn-danger" ng-click="open($index)"><i
     class="fa fa-trash-o"></i></button>

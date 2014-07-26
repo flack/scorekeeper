@@ -1,6 +1,6 @@
 <div class="container">
 
-<h1>Scores</h1>
+<h1 contenteditable ng-model="$storage.title">{{$storage.title || default_title}}</h1>
 
 <alert ng-hide="$storage.players" type="danger">You have to <a class="alert-link" ui-sref="players">add some players</a> for this to work!</alert>
 

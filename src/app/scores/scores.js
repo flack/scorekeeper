@@ -18,10 +18,12 @@ angular.module( 'ngScorekeeper.scores', [
 })
 
 .controller( 'ScoresCtrl', function HomeController( $scope, $localStorage ) {
+    $scope.default_title = 'Untitled Game';
     $scope.$storage = $localStorage.$default(
     {
         games: [],
         players: [],
+        title: $scope.default_title,
         rows: [],
         started: null,
         finished: null
@@ -66,6 +68,7 @@ angular.module( 'ngScorekeeper.scores', [
         $scope.running = false;
         var game =
             {
+                title: angular.copy($scope.$storage.title),
                 started: angular.copy($scope.$storage.started),
                 finished: angular.copy($scope.$storage.finished),
                 players: angular.copy($scope.$storage.players),
@@ -227,7 +230,41 @@ angular.module( 'ngScorekeeper.scores', [
     }
   };
 })
+.directive('contenteditable', ['$localStorage', function($localStorage) {
+    return {
+      restrict: 'A',
+      require: '?ngModel',
+      link: function(scope, element, attrs, ngModel) {
+          if (!ngModel)
+          {
+              return;
+          }
 
+          ngModel.$render = function() {
+              if (element.text() !== ngModel.$viewValue)
+              {
+                  element.text(ngModel.$viewValue || scope.default_title);
+              }
+          };
+
+          element.on('blur', function() {
+              scope.$apply(read);
+          });
+          ngModel.$render();
+
+          function read() {
+              var title = $.trim(element.text());
+              title = title.replace(/<br>/g, '');
+              if (title === '')
+              {
+                  title = scope.default_title;
+              }
+              ngModel.$setViewValue(title);
+              ngModel.$render();
+          }
+      }
+    };
+}])
 .filter('playername', ['$localStorage', function($localStorage)
 {
     return function (input)
