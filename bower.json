@@ -5,7 +5,7 @@
     "angular": "^1.2",
     "angular-mocks": "^1.2",
     "bootstrap": "^3.2",
-    "angular-bootstrap": "~0.13",
+    "angular-bootstrap": "^2.0",
     "angular-ui-router": "^1.0",
     "ngstorage": "~0.3.0",
     "angular-ui-sortable": "~0.19"

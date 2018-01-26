@@ -2,7 +2,7 @@
 
 <h1 contenteditable ng-model="$storage.title">{{$storage.title || default_title}}</h1>
 
-<alert ng-hide="$storage.players" type="danger">You have to <a class="alert-link" ui-sref="players">add some players</a> for this to work!</alert>
+<uib-alert ng-hide="$storage.players" type="danger">You have to <a class="alert-link" ui-sref="players">add some players</a> for this to work!</uib-alert>
 
 <p ng-show="running">started <span am-time-ago="$storage.started"></span></p>
 
@@ -53,10 +53,10 @@
   </table>
 </div>
 
-<alert ng-show="winners && winners.length > 1" class="clearfix"
-type="success">It's a tie! Winners are {{winners | playernames}}</alert>
-<alert ng-show="winners && winners.length == 1" class="clearfix"
-type="success">{{winners[0] | playername}} wins!</alert>
+<uib-alert ng-show="winners && winners.length > 1" class="clearfix"
+type="success">It's a tie! Winners are {{winners | playernames}}</uib-alert>
+<uib-alert ng-show="winners && winners.length == 1" class="clearfix"
+type="success">{{winners[0] | playername}} wins!</uib-alert>
 
 <div ng-show="$storage.players" class="toolbar-right">
   <button class="btn btn-default" type="button" ng-hide="running || !$storage.finished" ng-click="resume()">

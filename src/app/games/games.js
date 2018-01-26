@@ -17,7 +17,7 @@ angular.module( 'ngScorekeeper.games', [
   });
 })
 
-.controller( 'GamesCtrl', ['$scope', '$modal', '$localStorage', function ( $scope, $modal, $localStorage ) {
+.controller( 'GamesCtrl', ['$scope', '$uibModal', '$localStorage', function ( $scope, $modal, $localStorage ) {
     $scope.$storage = $localStorage.$default({games: []});
     $scope.open = function (index)
     {
@@ -41,7 +41,7 @@ angular.module( 'ngScorekeeper.games', [
         });
     };
 }])
-.controller( 'ModalInstanceCtrl', ['$scope', '$modalInstance', 'selected', 'games', function ($scope, $modalInstance, selected, games) {
+.controller( 'ModalInstanceCtrl', ['$scope', '$uibModalInstance', 'selected', 'games', function ($scope, $modalInstance, selected, games) {
     $scope.game = games[selected];
 
     $scope.ok = function () {
