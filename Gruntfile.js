@@ -432,5 +432,4 @@ module.exports = function ( grunt ) {
       }
     });
   });
-
 };

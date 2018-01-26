@@ -66,7 +66,7 @@ module.exports = {
         'vendor/angular-ui-utils/modules/route/route.js',
         'vendor/jquery-ui/jquery-ui.min.js',
         'vendor/angular-ui-sortable/sortable.min.js',
-        'vendor/moment/min/moment-with-langs.min.js',
+        'vendor/moment/min/moment-with-locales.min.js',
         'vendor/angular-moment/angular-moment.min.js',
         'vendor/angular-animate/angular-animate.min.js',
         'vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
