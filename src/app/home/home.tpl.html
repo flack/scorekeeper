@@ -7,16 +7,18 @@
     that someone can be your phone!
   </p>
 
-  <div ng-include="show_social()"></div>
+	<div class="btn-group btn-group-lg" role="group">
+	    <a  ui-sref="players" class="btn btn-large btn-default">
+	      <i class="fa fa-user"></i>
+	      Add Players
+	    </a>
+	    <a href ui-sref="scores" class="btn btn-large btn-success">
+	      <i class="fa fa-pencil-square-o"></i>
+	      Track Scores
+	    </a>
+	</div>
 
-    <a  ui-sref="players" class="btn btn-large btn-default">
-      <i class="fa fa-user"></i>
-      Add Players
-    </a>
-    <a href ui-sref="scores" class="btn btn-large btn-success">
-      <i class="fa fa-pencil-square-o"></i>
-      Track Scores
-    </a>
+  <div ng-include="show_social()"></div>
 
 </div>
 </div>
