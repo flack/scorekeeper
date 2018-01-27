@@ -9,7 +9,7 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-ngmin');
+    grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-appcache');
@@ -163,7 +163,7 @@ module.exports = function ( grunt ) {
             }
         },
 
-        ngmin: {
+        ngAnnotate: {
             compile: {
                 files: [
                     {
@@ -382,7 +382,7 @@ module.exports = function ( grunt ) {
     ]);
 
     grunt.registerTask( 'compile', [
-        'less:compile', 'concat:compile_css', 'copy:compile_assets', 'copy:compile_vendorfonts', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
+        'less:compile', 'concat:compile_css', 'copy:compile_assets', 'copy:compile_vendorfonts', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
     ]);
 
     function filterForJS ( files ) {
