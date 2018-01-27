@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 1 - 2018-01-27T09:56:16.778Z
+# rev 3 - 2018-01-27T11:59:32.260Z
 
 CACHE:
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
@@ -16,5 +16,7 @@ assets/favicon.png
 assets/home-bg.jpg
 assets/scorekeeper-0.0.3.css
 assets/scorekeeper-0.0.3.js
+assets/scorekeeper-0.0.4.css
+assets/scorekeeper-0.0.4.js
 assets/scorekeeper.jpg
 index.html
