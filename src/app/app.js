@@ -10,18 +10,14 @@ angular.module( 'ngScorekeeper', [
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+    $urlRouterProvider.otherwise( '/home' );
 })
 
 .run( function run () {
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    if ( angular.isDefined( toState.data.pageTitle ) ) {
-      $scope.pageTitle = toState.data.pageTitle + ' | scorekeeper' ;
-    }
-  });
-})
-
-;
+.controller( 'AppCtrl', function AppCtrl ( $scope, $location, $transitions ) {
+      $transitions.onSuccess({}, function($transition) {
+          $scope.pageTitle = $transition.to().data.pageTitle + ' | scorekeeper';
+      });
+});
