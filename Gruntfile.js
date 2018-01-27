@@ -156,7 +156,6 @@ module.exports = function ( grunt ) {
                     'module.prefix',
                     '<%= build_dir %>/src/**/*.js',
                     '<%= html2js.app.dest %>',
-                    '<%= html2js.common.dest %>',
                     'module.suffix'
                 ],
                 dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -233,14 +232,6 @@ module.exports = function ( grunt ) {
                 },
                 src: [ '<%= app_files.atpl %>' ],
                 dest: '<%= build_dir %>/templates-app.js'
-            },
-
-            common: {
-                options: {
-                    base: 'src/common'
-                },
-                src: [ '<%= app_files.ctpl %>' ],
-                dest: '<%= build_dir %>/templates-common.js'
             }
         },
 
@@ -263,7 +254,6 @@ module.exports = function ( grunt ) {
                 src: [
                     '<%= vendor_files.js %>',
                     '<%= build_dir %>/src/**/*.js',
-                    '<%= html2js.common.dest %>',
                     '<%= html2js.app.dest %>',
                     '<%= vendor_files.css %>',
                     '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
@@ -285,7 +275,6 @@ module.exports = function ( grunt ) {
                 src: [
                     '<%= vendor_files.js %>',
                     '<%= html2js.app.dest %>',
-                    '<%= html2js.common.dest %>',
                     '<%= test_files.js %>'
                 ]
             }

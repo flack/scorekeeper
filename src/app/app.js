@@ -1,6 +1,5 @@
 angular.module( 'ngScorekeeper', [
     'templates-app',
-    'templates-common',
     'ngScorekeeper.home',
     'ngScorekeeper.players',
     'ngScorekeeper.scores',
