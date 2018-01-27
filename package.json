@@ -21,7 +21,7 @@
     "grunt-contrib-uglify": "^1.0",
     "grunt-contrib-watch": "^1.0",
     "grunt-gh-pages": "^2.0",
-    "grunt-html2js": "^0.3",
+    "grunt-html2js": "^0.5",
     "grunt-karma": "^2.0",
     "grunt-ng-annotate": "^3.0.0",
     "jasmine-core": "^2.9.1",

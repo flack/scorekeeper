@@ -314,8 +314,7 @@ module.exports = function ( grunt ) {
 
             tpls: {
                 files: [
-                    '<%= app_files.atpl %>',
-                    '<%= app_files.ctpl %>'
+                    '<%= app_files.atpl %>'
                 ],
                 tasks: [ 'html2js' ]
             },
