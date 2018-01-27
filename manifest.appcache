@@ -1,20 +1,20 @@
 CACHE MANIFEST
-# rev 1 - 2018-01-27T14:02:58.511Z
+# rev 1 - 2018-01-27T14:35:43.928Z
 
 CACHE:
-http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
-http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?v=4.1.0
-http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0
-http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0
-http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.ttf?v=4.1.0
-http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular
 assets/apple-touch-icon-120x120.png
 assets/apple-touch-icon-152x152.png
 assets/apple-touch-icon-76x76.png
 assets/apple-touch-icon.png
 assets/favicon.png
 assets/home-bg.jpg
-assets/scorekeeper-0.0.7.css
-assets/scorekeeper-0.0.7.js
+assets/scorekeeper-0.0.8.css
+assets/scorekeeper-0.0.8.js
 assets/scorekeeper.jpg
+fonts/FontAwesome.otf
+fonts/fontawesome-webfont.eot
+fonts/fontawesome-webfont.svg
+fonts/fontawesome-webfont.ttf
+fonts/fontawesome-webfont.woff
+fonts/fontawesome-webfont.woff2
 index.html
