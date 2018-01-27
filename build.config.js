@@ -75,15 +75,7 @@ module.exports = {
     assets: [
     ],
     fonts: [
+        'vendor/font-awesome/fonts/*'
     ]
-  },
-
-    appcache_literals: [
-        'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css',
-        'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?v=4.1.0',
-        'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0',
-        'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0',
-        'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.ttf?v=4.1.0',
-        'http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular',
-    ]
+  }
 };
