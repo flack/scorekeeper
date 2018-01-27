@@ -1,15 +1,21 @@
 CACHE MANIFEST
-# rev 1 - 2018-01-27T14:35:43.928Z
+# rev 1 - 2018-01-27T18:51:50.707Z
 
 CACHE:
+fonts/fontawesome-webfont.eot?v=4.7.0
+fonts/fontawesome-webfont.eot?#iefix&v=4.7.0
+fonts/fontawesome-webfont.woff?v=4.7.0
+fonts/fontawesome-webfont.woff2?v=4.7.0
+fonts/fontawesome-webfont.ttf?v=4.7.0
+fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular
 assets/apple-touch-icon-120x120.png
 assets/apple-touch-icon-152x152.png
 assets/apple-touch-icon-76x76.png
 assets/apple-touch-icon.png
 assets/favicon.png
 assets/home-bg.jpg
-assets/scorekeeper-0.0.8.css
-assets/scorekeeper-0.0.8.js
+assets/scorekeeper-0.0.9.css
+assets/scorekeeper-0.0.9.js
 assets/scorekeeper.jpg
 fonts/FontAwesome.otf
 fonts/fontawesome-webfont.eot
