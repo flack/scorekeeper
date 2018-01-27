@@ -77,5 +77,14 @@ module.exports = {
     fonts: [
         'vendor/font-awesome/fonts/*'
     ]
-  }
+  },
+
+    appcache_literals: [
+        'fonts/fontawesome-webfont.eot?v=4.7.0',
+        'fonts/fontawesome-webfont.eot?#iefix&v=4.7.0',
+        'fonts/fontawesome-webfont.woff?v=4.7.0',
+        'fonts/fontawesome-webfont.woff2?v=4.7.0',
+        'fonts/fontawesome-webfont.ttf?v=4.7.0',
+        'fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular'
+    ]
 };
