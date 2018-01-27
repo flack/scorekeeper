@@ -18,6 +18,10 @@ angular.module( 'ngScorekeeper', [
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location, $transitions ) {
       $transitions.onSuccess({}, function($transition) {
-          $scope.pageTitle = $transition.to().data.pageTitle + ' | scorekeeper';
+          if ($transition.to().name !== 'home') {
+              $scope.pageTitle = $transition.to().data.pageTitle + ' | scorekeeper';
+          } else {
+              $scope.pageTitle = 'scorekeeper';
+          }
       });
 });
