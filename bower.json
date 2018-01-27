@@ -1,6 +1,6 @@
 {
   "name": "scorekeeper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "devDependencies": {
     "angular": "^1.2",
     "angular-mocks": "^1.2",
