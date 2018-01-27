@@ -1,22 +1,20 @@
 CACHE MANIFEST
-# rev 2 - 2018-01-26T22:12:25.481Z
+# rev 1 - 2018-01-27T09:49:10.935Z
 
 CACHE:
-assets/apple-touch-icon-120x120.png
-assets/apple-touch-icon-152x152.png
-assets/apple-touch-icon-76x76.png
-assets/apple-touch-icon.png
-assets/favicon.png
-assets/home-bg.jpg
-assets/scorekeeper-0.0.2.css
-assets/scorekeeper-0.0.2.js
-assets/scorekeeper-0.0.3.css
-assets/scorekeeper-0.0.3.js
-assets/scorekeeper.jpg
-index.html
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?v=4.1.0
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.woff?v=4.1.0
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.ttf?v=4.1.0
 http://netdna.bootstrapcdn.com/font-awesome/4.1.0/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular
+assets/apple-touch-icon-120x120.png
+assets/apple-touch-icon-152x152.png
+assets/apple-touch-icon-76x76.png
+assets/apple-touch-icon.png
+assets/favicon.png
+assets/home-bg.jpg
+assets/scorekeeper-0.0.3.css
+assets/scorekeeper-0.0.3.js
+assets/scorekeeper.jpg
+index.html
