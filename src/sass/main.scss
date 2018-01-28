@@ -1,18 +1,8 @@
-/**
- * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
- * project should be imported as the rest are just wasting space.
- */
+@import 'variables.scss';
 
 @import '../../node_modules/@bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
 @import '../../node_modules/@bower_components/font-awesome/scss/font-awesome.scss';
-
-/**
- * This is our main variables file. We must include it last so we can overwrite any variable
- * definitions in our imported stylesheets.
- */
-
-@import 'variables.scss';
 
 
 /**
