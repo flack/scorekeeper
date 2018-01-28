@@ -3,16 +3,16 @@
  * project should be imported as the rest are just wasting space.
  */
 
-@import '../../node_modules/@bower_components//bootstrap/less/bootstrap.less';
+@import '../../node_modules/@bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
-@import '../../node_modules/@bower_components//font-awesome/less/font-awesome.less';
+@import '../../node_modules/@bower_components/font-awesome/scss/font-awesome.scss';
 
 /**
  * This is our main variables file. We must include it last so we can overwrite any variable
  * definitions in our imported stylesheets.
  */
 
-@import 'variables.less';
+@import 'variables.scss';
 
 
 /**
@@ -61,21 +61,21 @@ h2 {
  * Navigation
  */
 header {
-     background-color: @navbar-inverse-bg;
-     margin-bottom: @header-margin-bottom;
+     background-color: $navbar-inverse-bg;
+     margin-bottom: $header-margin-bottom;
 }
 
 .navbar {
   margin-bottom: 0;
   .nav li {
        &.active .nav-label {
-           color: @navbar-inverse-link-hover-color;
+           color: $navbar-inverse-link-hover-color;
        }
        .label {
-           color: @navbar-inverse-color;
+           color: $navbar-inverse-color;
        }
        &:hover .nav-label {
-           color: @navbar-inverse-link-hover-color;
+           color: $navbar-inverse-link-hover-color;
        }
 
        @media (max-width: 420px) {
@@ -89,7 +89,7 @@ header {
           .nav-label {
                font-size: 70%;
                display: block;
-               color: @navbar-inverse-color;
+               color: $navbar-inverse-color;
            }
          }
        }
@@ -125,13 +125,13 @@ header {
       margin-left: 20px;
 
       a, a:visited {
-        color: @gray-light;
+        color: $gray-light;
         text-decoration: none;
         font-size: 40px;
-        .transition( 250ms ease-in-out );
+        @include transition( 250ms ease-in-out );
 
         &:hover {
-          color: @gray;
+          color: $gray;
         }
       }
     }
@@ -142,5 +142,5 @@ header {
     float: right;
 }
 
-@import '../app/home/home.less';
-@import '../app/scores/scores.less';
+@import '../app/home/home.scss';
+@import '../app/scores/scores.scss';

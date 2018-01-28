@@ -6,7 +6,7 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-ng-annotate');
@@ -187,15 +187,15 @@ module.exports = function ( grunt ) {
             }
         },
 
-        less: {
+        sass: {
             build: {
                 files: {
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.less %>'
+                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.scss %>'
                 }
             },
             compile: {
                 files: {
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.less %>'
+                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.scss %>'
                 },
                 options: {
                     cleancss: true,
@@ -320,9 +320,9 @@ module.exports = function ( grunt ) {
                 tasks: [ 'html2js' ]
             },
 
-            less: {
-                files: [ 'src/**/*.less' ],
-                tasks: [ 'less:build' ]
+            sass: {
+                files: [ 'src/**/*.scss' ],
+                tasks: [ 'sass:build' ]
             },
 
             jsunit: {
@@ -364,14 +364,14 @@ module.exports = function ( grunt ) {
     grunt.registerTask( 'default', [ 'build', 'compile' ] );
 
     grunt.registerTask( 'build', [
-        'clean', 'html2js', 'jshint', 'less:build',
+        'clean', 'html2js', 'jshint', 'sass:build',
         'copy:build_app_assets', 'copy:build_vendor_fonts', 'copy:build_vendor_assets',
         'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendor_css', 'index:build', 'karmaconfig',
         'karma:continuous'
     ]);
 
     grunt.registerTask( 'compile', [
-        'less:compile', 'concat:compile_css', 'copy:compile_assets', 'copy:compile_vendorfonts', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
+        'sass:compile', 'concat:compile_css', 'copy:compile_assets', 'copy:compile_vendorfonts', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
     ]);
 
     function filterForJS ( files ) {

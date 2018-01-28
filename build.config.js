@@ -15,7 +15,7 @@ module.exports = {
    * stuff in `src/`). These file paths are used in the configuration of
    * build tasks. `js` is all project javascript, less tests. `atpl` contains
    * our app's components' template HTML files. `html` is just our
-   * main HTML file, `less` is our main stylesheet, and `unit` contains our
+   * main HTML file, `scss` is our main stylesheet, and `unit` contains our
    * app's unit tests.
    */
   app_files: {
@@ -25,7 +25,7 @@ module.exports = {
     atpl: [ 'src/app/**/*.tpl.html' ],
 
     html: [ 'src/index.html' ],
-    less: 'src/less/main.less'
+    scss: 'src/sass/main.scss'
   },
 
   /**
