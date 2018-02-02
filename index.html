@@ -5,7 +5,12 @@
     <title ng-bind="pageTitle"></title>
     
     <link rel="manifest" href="manifest.webmanifest">
-    <script type="text/javascript" src="/service-worker.js"></script>
+        
+    <script>
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('service-worker.js');
+	}
+	</script>
     
     <link rel="icon" href="assets/favicon.png">
 
