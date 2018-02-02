@@ -2,6 +2,7 @@
   "name": "scorekeeper",
   "short_name": "scorekeeper",
   "start_url": ".",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#fff",
   "description": "An app for tracking scores in card or board games",
