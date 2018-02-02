@@ -33,14 +33,12 @@ module.exports = function ( grunt ) {
         bump: {
             options: {
                 files: [
-                    "package.json",
-                    "bower.json"
+                    "package.json"
                 ],
                 commit: true,
                 commitMessage: 'release v%VERSION%',
                 commitFiles: [
-                    "package.json",
-                    "bower.json"
+                    "package.json"
                 ],
                 createTag: true,
                 tagName: 'v%VERSION%',
