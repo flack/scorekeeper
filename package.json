@@ -40,6 +40,7 @@
     "grunt-karma": "^2.0",
     "grunt-ng-annotate": "^3.0.0",
     "grunt-sass": "^2.0.0",
+    "grunt-service-worker": "^0.1.2",
     "jasmine-core": "^2.9.1",
     "karma": "^2.0",
     "karma-firefox-launcher": "^1.0",

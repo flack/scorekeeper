@@ -13,6 +13,7 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-appcache');
+    grunt.loadNpmTasks('grunt-service-worker');
 
     var userConfig = require( './build.config.js' );
 
@@ -61,6 +62,12 @@ module.exports = function ( grunt ) {
                         src: [ '**' ],
                         dest: '<%= build_dir %>/assets/',
                         cwd: 'src/assets',
+                        expand: true
+                    },
+                    {
+                        src: [ 'manifest.webmanifest' ],
+                        dest: '<%= build_dir %>/',
+                        cwd: 'src',
                         expand: true
                     }
                 ]
@@ -134,6 +141,12 @@ module.exports = function ( grunt ) {
                         src: [ '**' ],
                         dest: '<%= compile_dir %>/assets',
                         cwd: '<%= build_dir %>/assets',
+                        expand: true
+                    },
+                    {
+                        src: [ 'manifest.webmanifest' ],
+                        dest: '<%= compile_dir %>/',
+                        cwd: '<%= build_dir %>/',
                         expand: true
                     }
                 ]
@@ -353,6 +366,14 @@ module.exports = function ( grunt ) {
                     literals: '<%= appcache_literals %>'
                 }
             }
+        },
+        service_worker: {
+            options: {
+                baseDir: 'bin/',
+                staticFileGlobs: ['assets/*', 'fonts/*', 'index.html']
+            },
+            all: {
+            }
         }
     };
 
@@ -371,7 +392,7 @@ module.exports = function ( grunt ) {
     ]);
 
     grunt.registerTask( 'compile', [
-        'sass:compile', 'concat:compile_css', 'copy:compile_assets', 'copy:compile_vendorfonts', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'appcache'
+        'sass:compile', 'concat:compile_css', 'copy:compile_assets', 'copy:compile_vendorfonts', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'appcache', 'service_worker'
     ]);
 
     function filterForJS ( files ) {
