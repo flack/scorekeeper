@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title ng-bind="pageTitle"></title>
-
+    
+    <link rel="manifest" href="manifest.webmanifest">
+    <script type="text/javascript" src="service-worker.js"></script>
+    
     <link rel="icon" href="assets/favicon.png">
 
     <meta name="apple-mobile-web-app-title" content="scorekeeper">
@@ -20,7 +23,7 @@
     <meta property="og:image" content="https://flack.github.io/scorekeeper/assets/scorekeeper.jpg" />
     <meta property="og:description" content="scorekeeper: A simple way to track scores for board and card games">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     

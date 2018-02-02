@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 1 - 2018-01-28T15:08:19.551Z
+# rev 1 - 2018-02-02T08:36:06.791Z
 
 CACHE:
 fonts/fontawesome-webfont.eot?v=4.7.0
@@ -24,3 +24,5 @@ fonts/fontawesome-webfont.ttf
 fonts/fontawesome-webfont.woff
 fonts/fontawesome-webfont.woff2
 index.html
+manifest.webmanifest
+service-worker.js
