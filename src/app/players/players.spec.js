@@ -1,7 +1,9 @@
 describe( 'players section', function() {
-    beforeEach( module( 'ngScorekeeper.players' ) );
+    var scope, ctrl;
 
-    beforeEach(inject(function($controller) {
+    beforeEach( angular.mock.module( 'ngScorekeeper.players' ) );
+
+    beforeEach(angular.mock.inject(function($controller) {
         scope = {};
         ctrl = $controller('PlayersCtrl', {$scope:scope});
     }));

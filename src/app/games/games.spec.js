@@ -5,9 +5,9 @@
  * automatically.
  */
 describe( 'home section', function() {
-  beforeEach( module( 'ngScorekeeper.games' ) );
+  beforeEach( angular.mock.module( 'ngScorekeeper.games' ) );
 
-  it( 'should have a dummy test', inject( function() {
+  it( 'should have a dummy test', angular.mock.inject( function() {
     expect( true ).toBeTruthy();
   }));
 });

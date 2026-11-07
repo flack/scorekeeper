@@ -8,7 +8,6 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-bump');
-    grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-gh-pages');
@@ -249,19 +248,6 @@ module.exports = function ( grunt ) {
             }
         },
 
-        karma: {
-            options: {
-                configFile: '<%= build_dir %>/karma-unit.js'
-            },
-            unit: {
-                port: 9019,
-                background: true
-            },
-            continuous: {
-                singleRun: true
-            }
-        },
-
         index: {
             build: {
                 dir: '<%= build_dir %>',
@@ -283,17 +269,6 @@ module.exports = function ( grunt ) {
             }
         },
 
-        karmaconfig: {
-            unit: {
-                dir: '<%= build_dir %>',
-                src: [
-                    '<%= vendor_files.js %>',
-                    '<%= html2js.app.dest %>',
-                    '<%= test_files.js %>'
-                ]
-            }
-        },
-
         delta: {
             options: {
                 livereload: true
@@ -311,7 +286,7 @@ module.exports = function ( grunt ) {
                 files: [
                     '<%= app_files.js %>'
                 ],
-                tasks: [ 'jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
+                tasks: [ 'jshint:src', 'test', 'copy:build_appjs' ]
             },
 
             assets: {
@@ -342,7 +317,7 @@ module.exports = function ( grunt ) {
                 files: [
                     '<%= app_files.jsunit %>'
                 ],
-                tasks: [ 'jshint:test', 'karma:unit:run' ],
+                tasks: [ 'jshint:test', 'test' ],
                 options: {
                     livereload: false
                 }
@@ -380,15 +355,14 @@ module.exports = function ( grunt ) {
     grunt.initConfig( Object.assign( taskConfig, userConfig ) );
 
     grunt.renameTask( 'watch', 'delta' );
-    grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+    grunt.registerTask( 'watch', [ 'build', 'delta' ] );
 
     grunt.registerTask( 'default', [ 'build', 'compile' ] );
 
     grunt.registerTask( 'build', [
         'clean', 'html2js', 'jshint', 'sass:build',
         'copy:build_app_assets', 'copy:build_vendor_fonts', 'copy:build_vendor_assets',
-        'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendor_css', 'index:build', 'karmaconfig',
-        'karma:continuous'
+        'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_vendor_css', 'index:build', 'test'
     ]);
 
     grunt.registerTask( 'compile', [
@@ -429,17 +403,17 @@ module.exports = function ( grunt ) {
         });
     });
 
-    grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
-        var jsFiles = filterForJS( this.filesSrc );
+    grunt.registerTask( 'test', 'Run the unit tests once with Vitest', function () {
+        var done = this.async(),
+            vitestDir = require( 'path' ).dirname( require.resolve( 'vitest/package.json' ) ),
+            vitestBin = require( 'path' ).join( vitestDir, require( 'vitest/package.json' ).bin.vitest );
 
-        grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', {
-            process: function ( contents, path ) {
-                return grunt.template.process( contents, {
-                    data: {
-                        scripts: jsFiles
-                    }
-                });
-            }
+        grunt.util.spawn({
+            cmd: process.execPath,
+            args: [ vitestBin, 'run' ],
+            opts: { stdio: 'inherit' }
+        }, function ( error ) {
+            done( !error );
         });
     });
 };
