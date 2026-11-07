@@ -61,7 +61,6 @@ module.exports = {
         'node_modules/@bower_components/angular/angular.js',
         'node_modules/@bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
         'node_modules/@bower_components/angular-ui-router/release/angular-ui-router.js',
-        'node_modules/@bower_components/angular-ui-utils/modules/route/route.js',
         'node_modules/@bower_components/jquery-ui/jquery-ui.min.js',
         'node_modules/@bower_components/angular-ui-sortable/sortable.min.js',
         'node_modules/@bower_components/moment/min/moment-with-locales.min.js',

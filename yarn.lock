@@ -1943,15 +1943,6 @@ grunt-contrib-jshint@^1.0:
     hooker "^0.2.3"
     jshint "~2.9.4"
 
-grunt-contrib-less@^1.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/grunt-contrib-less/-/grunt-contrib-less-1.4.1.tgz#3bbdec0b75d12ceaa55d62943625c0b0861cdf6f"
-  dependencies:
-    async "^2.0.0"
-    chalk "^1.0.0"
-    less "~2.7.1"
-    lodash "^4.8.2"
-
 grunt-contrib-uglify@^1.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/grunt-contrib-uglify/-/grunt-contrib-uglify-1.0.2.tgz#ae67a46f9153edd4cb11813a55eb69c70d7db2fb"
