@@ -9,12 +9,12 @@
     "url": "git@github.com:flack/scorekeeper.git"
   },
   "dependencies": {
-    "@bower_components/angular": "github:angular/bower-angular#semver:^1.6",
-    "@bower_components/angular-animate": "github:angular/bower-angular-animate#semver:^1.2",
+    "@bower_components/angular": "github:angular/bower-angular#semver:^1.8.3",
+    "@bower_components/angular-animate": "github:angular/bower-angular-animate#semver:^1.8.3",
     "@bower_components/angular-bootstrap": "github:angular-ui/bootstrap-bower#semver:^2.0",
-    "@bower_components/angular-mocks": "github:angular/bower-angular-mocks#semver:^1.2",
+    "@bower_components/angular-mocks": "github:angular/bower-angular-mocks#semver:^1.8.3",
     "@bower_components/angular-moment": "npm:angular-moment@^1.0",
-    "@bower_components/angular-ui-router": "github:angular-ui/angular-ui-router-bower#semver:^1.0",
+    "@bower_components/angular-ui-router": "npm:@uirouter/angularjs@^1.1.2",
     "@bower_components/angular-ui-sortable": "npm:angular-ui-sortable@~0.19.0",
     "@bower_components/bootstrap-sass": "github:twbs/bootstrap-sass#semver:^3.2",
     "@bower_components/font-awesome": "github:FortAwesome/Font-Awesome#semver:^4.7.0",
