@@ -199,6 +199,9 @@ module.exports = function ( grunt ) {
         },
 
         sass: {
+            options: {
+                implementation: require('sass')
+            },
             build: {
                 files: {
                     '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.scss %>'
@@ -209,8 +212,7 @@ module.exports = function ( grunt ) {
                     '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.scss %>'
                 },
                 options: {
-                    cleancss: true,
-                    compress: true
+                    outputStyle: 'compressed'
                 }
             }
         },
@@ -375,7 +377,7 @@ module.exports = function ( grunt ) {
         }
     };
 
-    grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
+    grunt.initConfig( Object.assign( taskConfig, userConfig ) );
 
     grunt.renameTask( 'watch', 'delta' );
     grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );

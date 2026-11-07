@@ -9,23 +9,23 @@
     "url": "git@github.com:flack/scorekeeper.git"
   },
   "dependencies": {
-    "@bower_components/angular": "angular/bower-angular#^1.6",
-    "@bower_components/angular-animate": "angular/bower-angular-animate#^1.2",
-    "@bower_components/angular-bootstrap": "angular-ui/bootstrap-bower#^2.0",
-    "@bower_components/angular-mocks": "angular/bower-angular-mocks#^1.2",
-    "@bower_components/angular-moment": "urish/angular-moment#^1.0",
-    "@bower_components/angular-ui-router": "angular-ui/angular-ui-router-bower#^1.0",
-    "@bower_components/angular-ui-sortable": "angular-ui/ui-sortable#~0.19",
-    "@bower_components/bootstrap-sass": "twbs/bootstrap-sass#^3.2",
-    "@bower_components/font-awesome": "FortAwesome/Font-Awesome#^4.7.0",
-    "@bower_components/jquery": "jquery/jquery-dist#1.9.1 - 3",
-    "@bower_components/jquery-ui": "components/jqueryui#>=1.12.x",
-    "@bower_components/jquery-ui-touch-punch": "git://github.com/functino/jquery-ui-touch-punch.git#*",
-    "@bower_components/moment": "moment/moment#>=2.19.3 <3.0.0",
-    "@bower_components/ngstorage": "gsklee/ngStorage#~0.3.0"
+    "@bower_components/angular": "github:angular/bower-angular#semver:^1.6",
+    "@bower_components/angular-animate": "github:angular/bower-angular-animate#semver:^1.2",
+    "@bower_components/angular-bootstrap": "github:angular-ui/bootstrap-bower#semver:^2.0",
+    "@bower_components/angular-mocks": "github:angular/bower-angular-mocks#semver:^1.2",
+    "@bower_components/angular-moment": "npm:angular-moment@^1.0",
+    "@bower_components/angular-ui-router": "github:angular-ui/angular-ui-router-bower#semver:^1.0",
+    "@bower_components/angular-ui-sortable": "npm:angular-ui-sortable@~0.19.0",
+    "@bower_components/bootstrap-sass": "github:twbs/bootstrap-sass#semver:^3.2",
+    "@bower_components/font-awesome": "github:FortAwesome/Font-Awesome#semver:^4.7.0",
+    "@bower_components/jquery": "github:jquery/jquery-dist#semver:1.9.1 - 3",
+    "@bower_components/jquery-ui": "github:components/jqueryui#semver:>=1.12.x",
+    "@bower_components/jquery-ui-touch-punch": "npm:jquery-ui-touch-punch@^0.2.3",
+    "@bower_components/moment": "github:moment/moment#semver:>=2.19.3 <3.0.0",
+    "@bower_components/ngstorage": "github:gsklee/ngStorage#semver:~0.3.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "^1.6.1",
     "grunt-appcache": "^0.2",
     "grunt-bump": "~0.7",
     "grunt-contrib-clean": "^1.0",
@@ -38,14 +38,12 @@
     "grunt-html2js": "^0.5",
     "grunt-karma": "^2.0",
     "grunt-ng-annotate": "^3.0.0",
-    "grunt-sass": "^2.0.0",
+    "grunt-sass": "^3.1.0",
     "grunt-service-worker": "^0.1.2",
     "jasmine-core": "^2.9.1",
     "karma": "^2.0",
     "karma-firefox-launcher": "^1.0",
-    "karma-jasmine": "^1.0"
-  },
-  "engines": {
-    "yarn": ">= 1.0.0"
+    "karma-jasmine": "^1.0",
+    "sass": "^1.32.0"
   }
 }
