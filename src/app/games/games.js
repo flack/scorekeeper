@@ -6,16 +6,16 @@ angular.module( 'ngScorekeeper.games', [
 ])
 
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'games', {
-    url: '/games',
-    views: {
-      "main": {
-        controller: 'GamesCtrl',
-        templateUrl: 'games/games.tpl.html'
-      }
-    },
-    data:{ pageTitle: 'Games' }
-  });
+    $stateProvider.state( 'games', {
+        url: '/games',
+        views: {
+            "main": {
+                controller: 'GamesCtrl',
+                templateUrl: 'games/games.tpl.html'
+            }
+        },
+        data:{ pageTitle: 'Games' }
+    });
 })
 
 .controller( 'GamesCtrl', ['$scope', '$uibModal', '$localStorage', function ( $scope, $modal, $localStorage ) {

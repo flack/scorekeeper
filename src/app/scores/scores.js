@@ -6,16 +6,16 @@ angular.module( 'ngScorekeeper.scores', [
 ])
 
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'scores', {
-    url: '/scores',
-    views: {
-      "main": {
-        controller: 'ScoresCtrl',
-        templateUrl: 'scores/scores.tpl.html'
-      }
-    },
-    data:{ pageTitle: 'Scores' }
-  });
+    $stateProvider.state( 'scores', {
+        url: '/scores',
+        views: {
+            "main": {
+                controller: 'ScoresCtrl',
+                templateUrl: 'scores/scores.tpl.html'
+            }
+        },
+        data:{ pageTitle: 'Scores' }
+    });
 })
 
 .controller( 'ScoresCtrl', function ScoresController( $scope, $localStorage ) {
@@ -178,54 +178,54 @@ angular.module( 'ngScorekeeper.scores', [
     };
 })
 .directive('focusMe', function($timeout, $parse) {
-  return {
-    link: function(scope, element, attrs) {
-      var model = $parse(attrs.focusMe);
-      scope.$watch(model, function(value) {
-        if (value === true) {
-          $timeout(function() {
-            element[0].focus();
-          });
+    return {
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.focusMe);
+            scope.$watch(model, function(value) {
+                if (value === true) {
+                    $timeout(function() {
+                        element[0].focus();
+                    });
+                }
+            });
+            element.on('blur', function() {
+                if (model.assign) {
+                    scope.$apply(model.assign(scope, false));
+                }
+            });
         }
-      });
-      element.on('blur', function() {
-          if (model.assign) {
-              scope.$apply(model.assign(scope, false));
-          }
-      });
-    }
-  };
+    };
 })
 .directive('contenteditable', function() {
     return {
-      restrict: 'A',
-      require: '?ngModel',
-      link: function(scope, element, attrs, ngModel) {
-          if (!ngModel) {
-              return;
-          }
+        restrict: 'A',
+        require: '?ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            if (!ngModel) {
+                return;
+            }
 
-          ngModel.$render = function() {
-              if (element.text() !== ngModel.$viewValue) {
-                  element.text(ngModel.$viewValue || scope.default_title);
-              }
-          };
+            ngModel.$render = function() {
+                if (element.text() !== ngModel.$viewValue) {
+                    element.text(ngModel.$viewValue || scope.default_title);
+                }
+            };
 
-          element.on('blur', function() {
-              scope.$apply(read);
-          });
-          ngModel.$render();
+            element.on('blur', function() {
+                scope.$apply(read);
+            });
+            ngModel.$render();
 
-          function read() {
-              var title = element.text().trim();
-              title = title.replace(/<br>/g, '');
-              if (title === '') {
-                  title = scope.default_title;
-              }
-              ngModel.$setViewValue(title);
-              ngModel.$render();
-          }
-      }
+            function read() {
+                var title = element.text().trim();
+                title = title.replace(/<br>/g, '');
+                if (title === '') {
+                    title = scope.default_title;
+                }
+                ngModel.$setViewValue(title);
+                ngModel.$render();
+            }
+        }
     };
 })
 .filter('playername', ['$localStorage', function($localStorage) {

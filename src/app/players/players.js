@@ -5,16 +5,16 @@ angular.module( 'ngScorekeeper.players', [
 ])
 
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'players', {
-    url: '/players',
-    views: {
-      "main": {
-        controller: 'PlayersCtrl',
-        templateUrl: 'players/players.tpl.html'
-      }
-    },
-    data:{ pageTitle: 'Manage Players' }
-  });
+    $stateProvider.state( 'players', {
+        url: '/players',
+        views: {
+            "main": {
+                controller: 'PlayersCtrl',
+                templateUrl: 'players/players.tpl.html'
+            }
+        },
+        data:{ pageTitle: 'Manage Players' }
+    });
 })
 
 .controller( 'PlayersCtrl', function PlayersController( $scope, $localStorage ) {

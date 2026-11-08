@@ -14,11 +14,11 @@ angular.module( 'ngScorekeeper', [
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $transitions ) {
-      $transitions.onSuccess({}, function($transition) {
-          if ($transition.to().name !== 'home') {
-              $scope.pageTitle = $transition.to().data.pageTitle + ' | scorekeeper';
-          } else {
-              $scope.pageTitle = 'scorekeeper';
-          }
-      });
+    $transitions.onSuccess({}, function($transition) {
+        if ($transition.to().name !== 'home') {
+            $scope.pageTitle = $transition.to().data.pageTitle + ' | scorekeeper';
+        } else {
+            $scope.pageTitle = 'scorekeeper';
+        }
+    });
 });
