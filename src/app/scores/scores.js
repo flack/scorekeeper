@@ -1,6 +1,7 @@
 angular.module( 'ngScorekeeper.scores', [
     'ui.router',
     'angularMoment',
+    'ui.bootstrap',
     'ngStorage'
 ])
 

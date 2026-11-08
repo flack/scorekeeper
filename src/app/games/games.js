@@ -1,6 +1,7 @@
 angular.module( 'ngScorekeeper.games', [
     'ui.router',
     'angularMoment',
+    'ui.bootstrap',
     'ngStorage'
 ])
 
