@@ -203,7 +203,7 @@ angular.module( 'ngScorekeeper.scores', [
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
-            element.on('focus, click', function () {
+            element.on('focus click', function () {
                 this.select();
             });
         }
