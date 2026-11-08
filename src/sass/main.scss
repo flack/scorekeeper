@@ -1,8 +1,67 @@
 @import 'variables.scss';
 
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+// Bootstrap without glyphicons, which are not used (icons come from Font Awesome)
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/print';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/code';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/tables';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/forms';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/buttons';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/component-animations';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/button-groups';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/input-groups';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/navs';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/navbar';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/pagination';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/pager';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/labels';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/badges';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/jumbotron';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/thumbnails';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/alerts';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/media';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/list-group';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/panels';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/wells';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/close';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/modals';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/tooltip';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/popovers';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/carousel';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/utilities';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities';
 
-@import '../../node_modules/font-awesome/scss/font-awesome.scss';
+// Font Awesome without its _path partial, so only the woff2/woff fonts get
+// bundled (and precached by the service worker)
+@import '../../node_modules/font-awesome/scss/variables';
+@import '../../node_modules/font-awesome/scss/mixins';
+@import '../../node_modules/font-awesome/scss/core';
+@import '../../node_modules/font-awesome/scss/larger';
+@import '../../node_modules/font-awesome/scss/fixed-width';
+@import '../../node_modules/font-awesome/scss/list';
+@import '../../node_modules/font-awesome/scss/bordered-pulled';
+@import '../../node_modules/font-awesome/scss/animated';
+@import '../../node_modules/font-awesome/scss/rotated-flipped';
+@import '../../node_modules/font-awesome/scss/stacked';
+@import '../../node_modules/font-awesome/scss/icons';
+@import '../../node_modules/font-awesome/scss/screen-reader';
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../../node_modules/font-awesome/fonts/fontawesome-webfont.woff2') format('woff2'),
+    url('../../node_modules/font-awesome/fonts/fontawesome-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 /**
@@ -73,6 +132,53 @@ header {
 
 .toolbar-right {
     float: right;
+}
+
+
+/**
+ * Confirmation dialog: a native <dialog> around Bootstrap's .modal-content
+ */
+
+dialog.confirm-dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+  overflow: visible;
+  width: auto;
+  max-width: calc(100% - 20px);
+  margin: 30px auto;
+
+  @media (min-width: $screen-sm-min) {
+    width: $modal-md;
+  }
+
+  &::backdrop {
+    background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+  }
+}
+
+
+/**
+ * Drag & drop sorting (Angular CDK)
+ */
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating,
+.cdk-drop-list-dragging .cdk-drag:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, .2, 1);
+}
+
+.drag-handle {
+  cursor: move;
+  touch-action: none;
 }
 
 @import 'animations.scss';

@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Manage Players</h1>
+  @if (storage.players.length === 0) {
+    <p class="show-after-animation" animate.enter="appearing">No players defined</p>
+  }
+  <div cdkDropList (cdkDropListDropped)="reorder($event)">
+    @for (player of storage.players; track player.id) {
+      <div class="form-group delete-animation" cdkDrag cdkDragLockAxis="y" animate.leave="leaving">
+        <div>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <span class="btn btn-default drag-handle" cdkDragHandle title="Drag to reorder"><i class="fa fa-sort"></i></span>
+            </span>
+            <input type="text" class="form-control" placeholder="enter player's name"
+              [(ngModel)]="player.name" (ngModelChange)="save()">
+            <span class="input-group-btn">
+              <button class="btn btn-danger" type="button" title="Remove" (click)="removePlayer(player.id)">
+                <i class="fa fa-trash-o"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  <h2>Add Player</h2>
+  <form #addPlayerForm="ngForm" ngNativeValidate (ngSubmit)="addPlayer(name, addPlayerForm)">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="enter player's name" name="name" required [(ngModel)]="name">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit" title="Add"><i class="fa fa-plus"></i></button>
+      </span>
+    </div>
+  </form>
+</div>

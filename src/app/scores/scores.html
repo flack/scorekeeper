@@ -1,0 +1,89 @@
+<div class="container">
+
+  <h1 skEditableTitle [(title)]="storage.title" (titleChange)="titleChanged()" [fallback]="defaultTitle"></h1>
+
+  @if (storage.players.length === 0) {
+    <div class="alert alert-danger" role="alert">You have to <a class="alert-link" routerLink="/players">add some players</a> for this to work!</div>
+  }
+
+  @if (running) {
+    <p>started {{ storage.started | timeAgo: now() }}</p>
+  }
+
+  <div class="scores-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Round</th>
+          @for (player of storage.players; track player.id) {
+            <th [class.success]="isWinner(player.id)">{{ player.name }}</th>
+          }
+          <th></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Totals</th>
+          @for (player of storage.players; track player.id) {
+            <th class="totals number" [class.success]="isWinner(player.id)">{{ totals[player.id] }}</th>
+          }
+          <th></th>
+        </tr>
+      </tfoot>
+      <tbody>
+        @for (row of storage.rows; track $index; let rowIndex = $index, lastRow = $last) {
+          <tr [class.active]="lastRow && running" [class.completed]="!lastRow || !running">
+            <th>{{ rowIndex + 1 }}</th>
+            @for (player of storage.players; track player.id) {
+              <td class="number" [class.success]="(!lastRow || !running) && isMax(row[player.id], row)">
+                <form (ngSubmit)="newRow()">
+                  <input
+                    class="score-input"
+                    type="tel"
+                    name="score"
+                    [attr.aria-label]="player.name + ', round ' + (rowIndex + 1)"
+                    (focus)="select($event)"
+                    (click)="select($event)"
+                    [(ngModel)]="row[player.id]"
+                    (ngModelChange)="scoreChanged(player.id)"
+                    [disabled]="!!storage.finished">
+                </form>
+              </td>
+            }
+            <td>
+              @if (running && lastRow) {
+                <button type="button" class="btn btn-success" title="Next round" (click)="newRow()"><i class="fa fa-plus"></i></button>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (winners.length > 1) {
+    <div class="clearfix alert alert-success" role="alert">It's a tie! Winners are {{ winners | playerNames }}</div>
+  } @else if (winners.length === 1) {
+    <div class="clearfix alert alert-success" role="alert">{{ winners[0] | playerName }} wins!</div>
+  }
+
+  <div class="toolbar-right">
+    @if (!running && storage.finished) {
+      <button class="btn btn-default" type="button" (click)="resume()">
+        <span class="fa fa-history"></span> Resume
+      </button>
+    }
+    @if (!running) {
+      <button class="btn btn-primary" type="button" (click)="start()">
+        <span class="fa fa-caret-square-o-right"></span> Start{{ storage.finished ? ' New' : '' }}
+      </button>
+    } @else {
+      <button class="btn btn-danger" type="button" (click)="abort()">
+        <span class="fa fa-trash-o"></span> Abort
+      </button>
+      <button class="btn btn-success" type="button" (click)="finish()">
+        <span class="fa fa-check-square-o"></span> Finish
+      </button>
+    }
+  </div>
+</div>

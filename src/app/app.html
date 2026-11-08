@@ -1,0 +1,53 @@
+<header>
+  <nav class="navbar navbar-static-top navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="navbar-brand">
+          <a routerLink="/home">scorekeeper</a>
+        </div>
+      </div>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a routerLink="/players">
+            <i class="fa fa-user"></i>
+            <span class="nav-label">Players</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/scores">
+            <i class="fa fa-pencil-square-o"></i>
+            <span class="nav-label">Scores</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/games">
+            <i class="fa fa-trophy"></i>
+            <span class="nav-label">Games</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p>
+        <a href="https://github.com/flack/scorekeeper/releases/tag/v{{ version }}">v{{ version }}</a>
+        &copy; 2014&ndash;2026 Andreas Flack.
+        <a href="https://github.com/flack/scorekeeper">Fork this</a>
+        <br />
+        based on
+        <a href="https://angular.dev">Angular</a>,
+        <a href="https://getbootstrap.com">Bootstrap</a>,
+        and
+        <a href="https://fontawesome.com/v4/">Font Awesome</a>.
+      </p>
+    </div>
+  </div>
+</footer>

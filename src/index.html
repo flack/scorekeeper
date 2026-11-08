@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="ngScorekeeper" ng-controller="AppCtrl" manifest="manifest.appcache">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title ng-bind="pageTitle"></title>
-    
+    <title>scorekeeper</title>
+    <base href="./">
+
     <link rel="manifest" href="manifest.webmanifest">
-    <script>
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('service-worker.js');
-	}
-	</script>
-    
     <link rel="icon" href="assets/favicon.png">
 
     <meta name="apple-mobile-web-app-title" content="scorekeeper">
@@ -29,69 +24,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
-
-    <% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
   </head>
   <body>
-    <header>
-      <nav class="navbar navbar-static-top navbar-inverse">
-        <div class="container">
-        <div class="navbar-header">
-          <div class="navbar-brand">
-            <a href ui-sref="home">
-              scorekeeper
-            </a>
-          </div>
-        </div>
-          <ul class="nav navbar-nav">
-            <li ui-sref-active="active">
-              <a href ui-sref="players">
-                <i class="fa fa-user"></i>
-                <span class="nav-label">Players</span>
-              </a>
-            </li>
-            <li ui-sref-active="active">
-              <a href ui-sref="scores">
-                <i class="fa fa-pencil-square-o"></i>
-                <span class="nav-label">Scores</span>
-              </a>
-            </li>
-            <li ui-sref-active="active">
-              <a href ui-sref="games">
-                <i class="fa fa-trophy"></i>
-                <span class="nav-label">Games</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <main ui-view="main"></main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-inner">
-          <p>
-            <a href="https://github.com/flack/scorekeeper/releases/tag/v<%= version %>">
-                v<%= version %>
-            </a>
-            &copy; 2014&ndash;2026 Andreas Flack.
-            <a href="https://github.com/flack/scorekeeper">Fork this</a>
-            <br />
-            based on
-            <a href="https://www.angularjs.org">AngularJS</a>,
-            <a href="https://getbootstrap.com">Bootstrap</a>,
-            <a href="https://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
-            and
-            <a href="https://fortawesome.github.com/Font-Awesome">Font Awesome</a>.
-          </p>
-        </div>
-      </div>
-    </footer>
+    <sk-root></sk-root>
   </body>
 </html>
