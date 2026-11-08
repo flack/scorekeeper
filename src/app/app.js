@@ -9,14 +9,11 @@ angular.module( 'ngScorekeeper', [
     'ui.router'
 ])
 
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
+.config( function myAppConfig ( $urlRouterProvider ) {
     $urlRouterProvider.otherwise( '/home' );
 })
 
-.run( function run () {
-})
-
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location, $transitions ) {
+.controller( 'AppCtrl', function AppCtrl ( $scope, $transitions ) {
       $transitions.onSuccess({}, function($transition) {
           if ($transition.to().name !== 'home') {
               $scope.pageTitle = $transition.to().data.pageTitle + ' | scorekeeper';

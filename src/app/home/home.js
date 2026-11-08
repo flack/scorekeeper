@@ -16,8 +16,6 @@ angular.module( 'ngScorekeeper.home', [
 })
 
 .controller( 'HomeCtrl', function HomeController( $scope , $window) {
-    $scope.isonline = $window.navigator.onLine;
-
     $scope.show_social = function()
     {
         if ($window.navigator.onLine)

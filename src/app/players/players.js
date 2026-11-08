@@ -32,11 +32,6 @@ angular.module( 'ngScorekeeper.players', [
         }
     };
 
-    $scope.update = function(player)
-    {
-        $scope.$storage.players[player.id].name = player.name;
-    };
-
     $scope.remove_player = function(player)
     {
         for (var i in $scope.$storage.players)

@@ -98,8 +98,7 @@ angular.module( 'ngScorekeeper.scores', [
 
     $scope.update_totals = function(player_id)
     {
-        var player_total = 0,
-            score = 0;
+        var player_total = 0;
         for (var i in $scope.$storage.rows)
         {
             player_total += parse_score($scope.$storage.rows[i][player_id]);
@@ -230,7 +229,7 @@ angular.module( 'ngScorekeeper.scores', [
     }
   };
 })
-.directive('contenteditable', ['$localStorage', function($localStorage) {
+.directive('contenteditable', function() {
     return {
       restrict: 'A',
       require: '?ngModel',
@@ -264,7 +263,7 @@ angular.module( 'ngScorekeeper.scores', [
           }
       }
     };
-}])
+})
 .filter('playername', ['$localStorage', function($localStorage)
 {
     return function (input)
