@@ -1,13 +1,23 @@
-/**
- * Tests sit right alongside the file they are testing, which is more intuitive
- * and portable than separating `src` and `test` directories. Additionally, the
- * build process will exclude all `.spec.js` files from the build
- * automatically.
- */
 describe( 'home section', function() {
-  beforeEach( angular.mock.module( 'ngScorekeeper.home' ) );
+    var $controller;
 
-  it( 'should have a dummy test', angular.mock.inject( function() {
-    expect( true ).toBeTruthy();
-  }));
+    beforeEach( angular.mock.module( 'ngScorekeeper.home' ) );
+
+    beforeEach( angular.mock.inject( function( _$controller_ ) {
+        $controller = _$controller_;
+    }));
+
+    function createController( online ) {
+        var scope = {};
+        $controller( 'HomeCtrl', { $scope: scope, $window: { navigator: { onLine: online } } } );
+        return scope;
+    }
+
+    it( 'should show the social buttons when online', function() {
+        expect( createController( true ).show_social() ).toBe( 'home/social.tpl.html' );
+    });
+
+    it( 'should hide the social buttons when offline', function() {
+        expect( createController( false ).show_social() ).toBeNull();
+    });
 });

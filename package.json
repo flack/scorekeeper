@@ -25,6 +25,7 @@
     "ngstorage": "~0.3.11"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.12",
     "grunt": "^1.6.3",
     "grunt-appcache": "^0.2.1",
     "grunt-bump": "^0.8.0",
@@ -45,6 +46,7 @@
     "vitest": "^4.1.12"
   },
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
   }
 }

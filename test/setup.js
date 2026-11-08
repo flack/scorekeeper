@@ -3,6 +3,9 @@
  * scripts, using the file lists from build.config.js). Runs before every spec file.
  */
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { runInThisContext } from 'node:vm';
 import { createRequire } from 'node:module';
 import { globSync } from 'tinyglobby';
 
@@ -10,8 +13,9 @@ const require = createRequire( import.meta.url );
 const config = require( '../build.config.js' );
 
 function loadScript( file ) {
-    // Indirect eval runs the code as a sloppy-mode global script, like a <script> tag
-    ( 0, eval )( readFileSync( file, 'utf8' ) + '\n//# sourceURL=' + file );
+    // Runs the code as a sloppy-mode global script, like a <script> tag. Naming it
+    // by its file URL lets V8 attribute it to the file, for coverage reports.
+    runInThisContext( readFileSync( file, 'utf8' ), { filename: pathToFileURL( resolve( file ) ).href } );
 }
 
 config.vendor_files.js.forEach( loadScript );

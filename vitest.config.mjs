@@ -5,6 +5,11 @@ export default defineConfig({
         environment: 'happy-dom',
         globals: true,
         include: [ 'src/**/*.spec.js' ],
-        setupFiles: [ 'test/setup.js' ]
+        setupFiles: [ 'test/setup.js' ],
+        coverage: {
+            provider: 'v8',
+            include: [ 'src/app/**/*.js' ],
+            exclude: [ 'src/**/*.spec.js' ]
+        }
     }
 });
