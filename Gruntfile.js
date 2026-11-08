@@ -234,8 +234,7 @@ module.exports = function ( grunt ) {
                 sub: true,
                 boss: true,
                 eqnull: true
-            },
-            globals: {}
+            }
         },
 
         html2js: {
