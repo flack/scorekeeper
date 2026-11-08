@@ -19,7 +19,7 @@
     "@bower_components/bootstrap-sass": "github:twbs/bootstrap-sass#semver:^3.2",
     "@bower_components/font-awesome": "github:FortAwesome/Font-Awesome#semver:^4.7.0",
     "@bower_components/jquery": "github:jquery/jquery-dist#semver:1.9.1 - 3",
-    "@bower_components/jquery-ui": "github:components/jqueryui#semver:>=1.12.x",
+    "@bower_components/jquery-ui": "npm:jquery-ui@^1.14.2",
     "@bower_components/jquery-ui-touch-punch": "npm:jquery-ui-touch-punch@^0.2.3",
     "@bower_components/moment": "github:moment/moment#semver:>=2.19.3 <3.0.0",
     "@bower_components/ngstorage": "github:gsklee/ngStorage#semver:~0.3.0"
