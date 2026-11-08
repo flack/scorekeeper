@@ -188,7 +188,7 @@ angular.module( 'ngScorekeeper.scores', [
           });
         }
       });
-      element.bind('blur', function() {
+      element.on('blur', function() {
           if (model.assign) {
               scope.$apply(model.assign(scope, false));
           }
@@ -217,7 +217,7 @@ angular.module( 'ngScorekeeper.scores', [
           ngModel.$render();
 
           function read() {
-              var title = $.trim(element.text());
+              var title = element.text().trim();
               title = title.replace(/<br>/g, '');
               if (title === '') {
                   title = scope.default_title;
