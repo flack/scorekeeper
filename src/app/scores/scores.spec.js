@@ -193,6 +193,29 @@ describe( 'scores section', function() {
             expect( scope.winners ).toEqual( [ 'player0', 'player2' ] );
         });
 
+        it( 'should pick the highest total when all totals are negative', function() {
+            addPlayers();
+            scope.start();
+            enterRound( { player0: '-5', player1: '-2' } );
+            scope.finish();
+            expect( scope.winners ).toEqual( [ 'player1' ] );
+        });
+
+        it( 'should report a tie between negative totals', function() {
+            addPlayers();
+            scope.start();
+            enterRound( { player0: '-3', player1: '-3' } );
+            scope.finish();
+            expect( scope.winners ).toEqual( [ 'player0', 'player1' ] );
+        });
+
+        it( 'should report a tie when nobody scored', function() {
+            addPlayers();
+            scope.start();
+            scope.finish();
+            expect( scope.winners ).toEqual( [ 'player0', 'player1' ] );
+        });
+
         it( 'should resume the last finished game', function() {
             addPlayers();
             scope.start();

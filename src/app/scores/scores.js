@@ -151,7 +151,7 @@ angular.module( 'ngScorekeeper.scores', [
     }
 
     function render_result() {
-        var highscore = 0,
+        var highscore = -Infinity,
             winners = [];
         for (var i in $scope.$storage.players) {
             if ($scope.totals[$scope.$storage.players[i].id] > highscore) {
