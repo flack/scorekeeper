@@ -14,9 +14,9 @@ module.exports = function ( grunt ) {
     grunt.loadNpmTasks('grunt-appcache');
     grunt.loadNpmTasks('grunt-service-worker');
 
-    var userConfig = require( './build.config.js' );
+    const userConfig = require( './build.config.js' );
 
-    var taskConfig = {
+    const taskConfig = {
         pkg: grunt.file.readJSON("package.json"),
 
         meta: {
@@ -233,7 +233,8 @@ module.exports = function ( grunt ) {
                 noarg: true,
                 sub: true,
                 boss: true,
-                eqnull: true
+                eqnull: true,
+                esversion: 6
             }
         },
 
@@ -381,11 +382,11 @@ module.exports = function ( grunt ) {
     }
 
     grunt.registerMultiTask( 'index', 'Process index.html template', function () {
-        var dirRE = new RegExp( '^('+grunt.config('build_dir')+'|'+grunt.config('compile_dir')+')\/', 'g' );
-        var jsFiles = filterForJS( this.filesSrc ).map( function ( file ) {
+        const dirRE = new RegExp( '^('+grunt.config('build_dir')+'|'+grunt.config('compile_dir')+')\/', 'g' );
+        const jsFiles = filterForJS( this.filesSrc ).map( function ( file ) {
             return file.replace( dirRE, '' );
         });
-        var cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
+        const cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
             return file.replace( dirRE, '' );
         });
 
@@ -403,9 +404,9 @@ module.exports = function ( grunt ) {
     });
 
     grunt.registerTask( 'test', 'Run the unit tests once with Vitest', function () {
-        var done = this.async(),
-            vitestDir = require( 'path' ).dirname( require.resolve( 'vitest/package.json' ) ),
-            vitestBin = require( 'path' ).join( vitestDir, require( 'vitest/package.json' ).bin.vitest );
+        const done = this.async();
+        const vitestDir = require( 'path' ).dirname( require.resolve( 'vitest/package.json' ) );
+        const vitestBin = require( 'path' ).join( vitestDir, require( 'vitest/package.json' ).bin.vitest );
 
         grunt.util.spawn({
             cmd: process.execPath,

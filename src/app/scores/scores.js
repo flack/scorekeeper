@@ -62,7 +62,7 @@ angular.module( 'ngScorekeeper.scores', [
     $scope.finish = function() {
         $scope.$storage.finished = new Date();
         $scope.running = false;
-        var game = {
+        const game = {
             title: angular.copy($scope.$storage.title),
             started: angular.copy($scope.$storage.started),
             finished: angular.copy($scope.$storage.finished),
@@ -79,8 +79,8 @@ angular.module( 'ngScorekeeper.scores', [
     };
 
     $scope.new_row = function() {
-        var row = {};
-        for (var i in $scope.$storage.players) {
+        const row = {};
+        for (const i in $scope.$storage.players) {
             row[$scope.$storage.players[i].id] = '';
         }
 
@@ -89,8 +89,8 @@ angular.module( 'ngScorekeeper.scores', [
     };
 
     $scope.update_totals = function(player_id) {
-        var player_total = 0;
-        for (var i in $scope.$storage.rows) {
+        let player_total = 0;
+        for (const i in $scope.$storage.rows) {
             player_total += parse_score($scope.$storage.rows[i][player_id]);
         }
         $scope.totals[player_id] = player_total;
@@ -98,12 +98,11 @@ angular.module( 'ngScorekeeper.scores', [
 
     $scope.is_max = function(score, row) {
         //copy to get rid of $$hashKey
-        var copy = angular.copy(row),
-            i;
+        const copy = angular.copy(row);
         if (is_row_empty(copy)) {
             return false;
         }
-        for (i in copy) {
+        for (const i in copy) {
             if (parse_score(copy[i]) > parse_score(score)) {
                 return false;
             }
@@ -112,7 +111,7 @@ angular.module( 'ngScorekeeper.scores', [
     };
 
     function is_row_empty(row) {
-        for (var i in row) {
+        for (const i in row) {
             if (parse_score(row[i]) !== 0) {
                 return false;
             }
@@ -135,7 +134,7 @@ angular.module( 'ngScorekeeper.scores', [
 
     function init() {
         if ($scope.$storage.rows.length > 0) {
-            for (var i in $scope.$storage.players) {
+            for (const i in $scope.$storage.players) {
                 $scope.update_totals($scope.$storage.players[i].id);
             }
         }
@@ -145,15 +144,15 @@ angular.module( 'ngScorekeeper.scores', [
     }
 
     function reset_totals() {
-        for (var i in $scope.$storage.players) {
+        for (const i in $scope.$storage.players) {
             $scope.totals[$scope.$storage.players[i].id] = 0;
         }
     }
 
     function render_result() {
-        var highscore = -Infinity,
-            winners = [];
-        for (var i in $scope.$storage.players) {
+        let highscore = -Infinity;
+        let winners = [];
+        for (const i in $scope.$storage.players) {
             if ($scope.totals[$scope.$storage.players[i].id] > highscore) {
                 highscore = $scope.totals[$scope.$storage.players[i].id];
                 winners = [$scope.$storage.players[i].id];
@@ -180,7 +179,7 @@ angular.module( 'ngScorekeeper.scores', [
 .directive('focusMe', function($timeout, $parse) {
     return {
         link: function(scope, element, attrs) {
-            var model = $parse(attrs.focusMe);
+            const model = $parse(attrs.focusMe);
             scope.$watch(model, function(value) {
                 if (value === true) {
                     $timeout(function() {
@@ -217,7 +216,7 @@ angular.module( 'ngScorekeeper.scores', [
             ngModel.$render();
 
             function read() {
-                var title = element.text().trim();
+                let title = element.text().trim();
                 title = title.replace(/<br>/g, '');
                 if (title === '') {
                     title = scope.default_title;
@@ -230,7 +229,7 @@ angular.module( 'ngScorekeeper.scores', [
 })
 .filter('playername', ['$localStorage', function($localStorage) {
     return function (input) {
-        for (var i in $localStorage.players) {
+        for (const i in $localStorage.players) {
             if ($localStorage.players[i].id === input) {
                 return $localStorage.players[i].name;
             }
@@ -240,9 +239,8 @@ angular.module( 'ngScorekeeper.scores', [
 }])
 .filter('playernames', ['$localStorage', function($localStorage) {
     return function (input) {
-        var names = [],
-            i;
-        for (i in $localStorage.players) {
+        const names = [];
+        for (const i in $localStorage.players) {
             if (input.indexOf($localStorage.players[i].id) !== -1) {
                 names.push($localStorage.players[i].name);
             }

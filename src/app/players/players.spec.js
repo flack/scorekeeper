@@ -1,5 +1,5 @@
 describe( 'players section', function() {
-    var scope;
+    let scope;
 
     beforeEach( function() {
         window.localStorage.clear();

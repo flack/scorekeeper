@@ -25,10 +25,10 @@ angular.module( 'ngScorekeeper.players', [
     // player must not take the id of a removed one that still has scores in
     // the current game
     function next_player_id() {
-        var highest = -1;
+        let highest = -1;
 
         function check(id) {
-            var match = /^player(\d+)$/.exec(id);
+            const match = /^player(\d+)$/.exec(id);
             if (match) {
                 highest = Math.max(highest, parseInt(match[1], 10));
             }
@@ -56,7 +56,7 @@ angular.module( 'ngScorekeeper.players', [
     };
 
     $scope.remove_player = function(player) {
-        for (var i in $scope.$storage.players) {
+        for (const i in $scope.$storage.players) {
             if ($scope.$storage.players[i].id === player.id) {
                 $scope.$storage.players.splice(i, 1);
                 break;

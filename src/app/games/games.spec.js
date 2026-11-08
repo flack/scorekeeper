@@ -1,5 +1,5 @@
 describe( 'games section', function() {
-    var $controller, $q, $rootScope;
+    let $controller, $q, $rootScope;
 
     beforeEach( function() {
         window.localStorage.clear();
@@ -14,7 +14,7 @@ describe( 'games section', function() {
     }));
 
     describe( 'GamesCtrl', function() {
-        var scope, $uibModal, modalResult;
+        let scope, $uibModal, modalResult;
 
         beforeEach( function() {
             modalResult = $q.defer();
@@ -26,7 +26,7 @@ describe( 'games section', function() {
 
         it( 'should open the confirmation dialog for the selected game', function() {
             scope.open( 1 );
-            var options = $uibModal.open.mock.calls[0][0];
+            const options = $uibModal.open.mock.calls[0][0];
             expect( options.templateUrl ).toBe( 'confirm_delete.html' );
             expect( options.controller ).toBe( 'ModalInstanceCtrl' );
             expect( options.resolve.selected() ).toBe( 1 );
@@ -49,7 +49,7 @@ describe( 'games section', function() {
     });
 
     describe( 'ModalInstanceCtrl', function() {
-        var scope, $uibModalInstance, games;
+        let scope, $uibModalInstance, games;
 
         beforeEach( function() {
             games = [ { title: 'First' }, { title: 'Second' } ];

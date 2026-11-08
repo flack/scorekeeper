@@ -1,5 +1,5 @@
 describe( 'home section', function() {
-    var $controller;
+    let $controller;
 
     beforeEach( angular.mock.module( 'ngScorekeeper.home' ) );
 
@@ -8,7 +8,7 @@ describe( 'home section', function() {
     }));
 
     function createController( online ) {
-        var scope = {};
+        const scope = {};
         $controller( 'HomeCtrl', { $scope: scope, $window: { navigator: { onLine: online } } } );
         return scope;
     }

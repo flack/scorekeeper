@@ -1,5 +1,5 @@
 describe( 'scores section', function() {
-    var scope, $controller, $localStorage;
+    let scope, $controller, $localStorage;
 
     beforeEach( function() {
         window.localStorage.clear();
@@ -22,7 +22,7 @@ describe( 'scores section', function() {
     }
 
     function enterRound( scores ) {
-        var row = scope.$storage.rows[scope.$storage.rows.length - 1];
+        const row = scope.$storage.rows[scope.$storage.rows.length - 1];
         angular.forEach( scores, function( score, player_id ) {
             row[player_id] = score;
             scope.update_totals( player_id );
@@ -74,7 +74,7 @@ describe( 'scores section', function() {
 
         it( 'should find the maximum in row', function() {
             scope.$storage.players.push( { 'id': 'player1', 'name': 'Player 1' } );
-            var row = { player1: '4', player2: '3.5' };
+            const row = { player1: '4', player2: '3.5' };
             expect( scope.is_max( '4', row ) ).toBeTruthy();
             expect( scope.is_max( '2', row ) ).toBeFalsy();
             expect( scope.is_max( '', row ) ).toBeFalsy();
@@ -144,7 +144,7 @@ describe( 'scores section', function() {
             expect( scope.winners ).toEqual( [ 'player0' ] );
             expect( scope.$storage.games.length ).toBe( 1 );
 
-            var game = scope.$storage.games[0];
+            const game = scope.$storage.games[0];
             expect( game.title ).toBe( 'Poker night' );
             expect( game.started ).toEqual( scope.$storage.started );
             expect( game.finished ).toEqual( scope.$storage.finished );
@@ -271,7 +271,7 @@ describe( 'scores section', function() {
     });
 
     describe( 'directives', function() {
-        var $compile, $rootScope, $timeout;
+        let $compile, $rootScope, $timeout;
 
         beforeEach( angular.mock.inject( function( _$compile_, _$rootScope_, _$timeout_ ) {
             $compile = _$compile_;
@@ -280,7 +280,7 @@ describe( 'scores section', function() {
         }));
 
         describe( 'selectOnFocus', function() {
-            var element;
+            let element;
 
             beforeEach( function() {
                 element = $compile( '<input select-on-focus value="12">' )( $rootScope );
@@ -299,7 +299,7 @@ describe( 'scores section', function() {
         });
 
         describe( 'focusMe', function() {
-            var element;
+            let element;
 
             beforeEach( function() {
                 $rootScope.focus_input = false;
@@ -334,7 +334,7 @@ describe( 'scores section', function() {
         });
 
         describe( 'contenteditable', function() {
-            var element;
+            let element;
 
             beforeEach( function() {
                 $rootScope.default_title = 'Untitled Game';

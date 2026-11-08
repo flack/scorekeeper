@@ -1,5 +1,5 @@
 describe( 'AppCtrl', function() {
-    var $scope, $state, $rootScope;
+    let $scope, $state, $rootScope;
 
     beforeEach( function() {
         window.localStorage.clear();
