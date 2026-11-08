@@ -33,13 +33,13 @@ module.exports = {
    */
   test_files: {
     js: [
-      'node_modules/@bower_components/angular-mocks/angular-mocks.js'
+      'node_modules/angular-mocks/angular-mocks.js'
     ]
   },
 
   /**
    * This is the same as `app_files`, except it contains patterns that
-   * reference vendor code (`node_modules/@bower_components/`) that we need to place into the build
+   * reference vendor code (`node_modules/`) that we need to place into the build
    * process somewhere. While the `app_files` property ensures all
    * standardized files are collected for compilation, it is the user's job
    * to ensure non-standardized (i.e. vendor-related) files are handled
@@ -57,24 +57,24 @@ module.exports = {
    */
   vendor_files: {
     js: [
-        'node_modules/@bower_components/jquery/dist/jquery.min.js',
-        'node_modules/@bower_components/angular/angular.js',
-        'node_modules/@bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-        'node_modules/@bower_components/angular-ui-router/release/angular-ui-router.js',
-        'node_modules/@bower_components/jquery-ui/dist/jquery-ui.min.js',
-        'node_modules/@bower_components/angular-ui-sortable/dist/sortable.min.js',
-        'node_modules/@bower_components/moment/min/moment-with-locales.min.js',
-        'node_modules/@bower_components/angular-moment/angular-moment.min.js',
-        'node_modules/@bower_components/angular-animate/angular-animate.min.js',
-        'node_modules/@bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
-        'node_modules/@bower_components/ngstorage/ngStorage.min.js'
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/angular/angular.js',
+        'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+        'node_modules/@uirouter/angularjs/release/angular-ui-router.js',
+        'node_modules/jquery-ui/dist/jquery-ui.min.js',
+        'node_modules/angular-ui-sortable/dist/sortable.min.js',
+        'node_modules/moment/min/moment-with-locales.min.js',
+        'node_modules/angular-moment/angular-moment.min.js',
+        'node_modules/angular-animate/angular-animate.min.js',
+        'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
+        'node_modules/ngstorage/ngStorage.min.js'
     ],
     css: [
     ],
     assets: [
     ],
     fonts: [
-        'node_modules/@bower_components/font-awesome/fonts/*'
+        'node_modules/font-awesome/fonts/*'
     ]
   },
 
