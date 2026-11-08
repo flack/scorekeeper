@@ -16,7 +16,7 @@
         <tr>
           <th>Round</th>
           @for (player of storage.players; track player.id) {
-            <th [class.success]="isWinner(player.id)">{{ player.name }}</th>
+            <th [class.table-success]="isWinner(player.id)">{{ player.name }}</th>
           }
           <th></th>
         </tr>
@@ -25,17 +25,17 @@
         <tr>
           <th>Totals</th>
           @for (player of storage.players; track player.id) {
-            <th class="totals number" [class.success]="isWinner(player.id)">{{ totals[player.id] }}</th>
+            <th class="totals number" [class.table-success]="isWinner(player.id)">{{ totals[player.id] }}</th>
           }
           <th></th>
         </tr>
       </tfoot>
       <tbody>
         @for (row of storage.rows; track $index; let rowIndex = $index, lastRow = $last) {
-          <tr [class.active]="lastRow && running" [class.completed]="!lastRow || !running">
+          <tr [class.table-active]="lastRow && running" [class.completed]="!lastRow || !running">
             <th>{{ rowIndex + 1 }}</th>
             @for (player of storage.players; track player.id) {
-              <td class="number" [class.success]="(!lastRow || !running) && isMax(row[player.id], row)">
+              <td class="number" [class.table-success]="(!lastRow || !running) && isMax(row[player.id], row)">
                 <form (ngSubmit)="newRow()">
                   <input
                     class="score-input"
@@ -62,14 +62,14 @@
   </div>
 
   @if (winners.length > 1) {
-    <div class="clearfix alert alert-success" role="alert">It's a tie! Winners are {{ winners | playerNames }}</div>
+    <div class="alert alert-success" role="alert">It's a tie! Winners are {{ winners | playerNames }}</div>
   } @else if (winners.length === 1) {
-    <div class="clearfix alert alert-success" role="alert">{{ winners[0] | playerName }} wins!</div>
+    <div class="alert alert-success" role="alert">{{ winners[0] | playerName }} wins!</div>
   }
 
   <div class="toolbar-right">
     @if (!running && storage.finished) {
-      <button class="btn btn-default" type="button" (click)="resume()">
+      <button class="btn btn-outline-secondary" type="button" (click)="resume()">
         <span class="fa fa-history"></span> Resume
       </button>
     }

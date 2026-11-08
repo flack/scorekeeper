@@ -1,6 +1,6 @@
-
-$navbar-inverse-bg: rgba(0, 0, 0, .8);
-
-$grid-float-breakpoint: 100px;
+$header-bg: rgba(0, 0, 0, .8);
 
 $header-margin-bottom: 20px;
+
+// table-group-divider in the same color as the other cell borders (default: currentcolor)
+$table-group-separator-color: var(--bs-table-border-color);

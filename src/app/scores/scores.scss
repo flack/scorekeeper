@@ -8,14 +8,17 @@
   tr.completed input {
     border: none;
     background-color: transparent;
-    -webkit-text-fill-color: $text-color;
+    -webkit-text-fill-color: var(--#{$prefix}body-color);
   }
-  tr.active td {
+  tr.table-active td {
     vertical-align: middle;
   }
   th.number,
   td.number {
     text-align: right;
+  }
+  tfoot th {
+    border-bottom-width: 0;
   }
   tfoot th.number {
     padding-right: .7em

@@ -1,0 +1,14 @@
+.game-table h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacer;
+
+  small {
+    color: var(--#{$prefix}secondary-color);
+  }
+}
+
+.game-table tbody tr:last-child > * {
+  border-bottom-width: 0;
+}

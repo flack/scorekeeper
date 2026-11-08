@@ -73,7 +73,7 @@ describe('Games', () => {
 
     it('should keep the game when cancelled', async () => {
         await openDialog(1);
-        dialog.querySelector<HTMLButtonElement>('.btn-default')!.click();
+        dialog.querySelector<HTMLButtonElement>('.btn-outline-secondary')!.click();
         await fixture.whenStable();
         expect(titles()).toEqual(['First', 'Second', 'Third']);
         expect(component.selected).toBeNull();

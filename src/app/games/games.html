@@ -1,21 +1,23 @@
-<dialog #confirmDelete class="confirm-dialog" aria-labelledby="confirm-delete-title"
+<dialog #confirmDelete class="modal confirm-dialog" aria-labelledby="confirm-delete-title"
   (close)="selected = null" (click)="backdropClick($event)">
   @if (selected; as game) {
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="confirm-delete-title">Delete Game from {{ game.started | calendar }}</h3>
-      </div>
-      <div class="modal-body">
-        <p>Players:</p>
-        <ul>
-          @for (player of game.players; track player.id) {
-            <li>{{ player.name }} ({{ game.totals[player.id] }} points)</li>
-          }
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-danger" type="button" (click)="confirm()"><i class="fa fa-trash-o"></i> Delete</button>
-        <button class="btn btn-default" type="button" (click)="cancel()" autofocus>Cancel</button>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="confirm-delete-title">Delete Game from {{ game.started | calendar }}</h3>
+        </div>
+        <div class="modal-body">
+          <p>Players:</p>
+          <ul>
+            @for (player of game.players; track player.id) {
+              <li>{{ player.name }} ({{ game.totals[player.id] }} points)</li>
+            }
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" type="button" (click)="confirm()"><i class="fa fa-trash-o"></i> Delete</button>
+          <button class="btn btn-outline-secondary" type="button" (click)="cancel()" autofocus>Cancel</button>
+        </div>
       </div>
     </div>
   }
@@ -26,10 +28,9 @@
   @for (game of storage.games; track game) {
     <div class="game-table delete-animation" animate.leave="leaving">
       <div>
-        <h3>{{ game.title || 'Untitled Game' }} <small>{{ game.started | calendar }}</small>
-          <div class="toolbar-right">
-            <button class="btn btn-danger" type="button" title="Delete" (click)="open(game)"><i class="fa fa-trash-o"></i></button>
-          </div>
+        <h3>
+          <span>{{ game.title || 'Untitled Game' }} <small>{{ game.started | calendar }}</small></span>
+          <button class="btn btn-danger" type="button" title="Delete" (click)="open(game)"><i class="fa fa-trash-o"></i></button>
         </h3>
         <table class="table">
           <thead>
@@ -39,7 +40,7 @@
               }
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-group-divider">
             <tr>
               @for (player of game.players; track player.id) {
                 <th>{{ game.totals[player.id] }}</th>

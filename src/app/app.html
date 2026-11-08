@@ -1,26 +1,22 @@
 <header>
-  <nav class="navbar navbar-static-top navbar-inverse">
+  <nav class="navbar navbar-expand" data-bs-theme="dark">
     <div class="container">
-      <div class="navbar-header">
-        <div class="navbar-brand">
-          <a routerLink="/home">scorekeeper</a>
-        </div>
-      </div>
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active">
-          <a routerLink="/players">
+      <a class="navbar-brand" routerLink="/home">scorekeeper</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/players">
             <i class="fa fa-user"></i>
             <span class="nav-label">Players</span>
           </a>
         </li>
-        <li routerLinkActive="active">
-          <a routerLink="/scores">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/scores">
             <i class="fa fa-pencil-square-o"></i>
             <span class="nav-label">Scores</span>
           </a>
         </li>
-        <li routerLinkActive="active">
-          <a routerLink="/games">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/games">
             <i class="fa fa-trophy"></i>
             <span class="nav-label">Games</span>
           </a>

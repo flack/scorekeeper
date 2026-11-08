@@ -312,7 +312,7 @@ describe('Scores', () => {
             await fixture.whenStable();
             expect(inputs().length).toBe(4);
             // The finished round marks its best score
-            expect(element.querySelectorAll('tbody tr')[0].querySelectorAll('td.success').length).toBe(1);
+            expect(element.querySelectorAll('tbody tr')[0].querySelectorAll('td.table-success').length).toBe(1);
 
             button('Finish').click();
             await fixture.whenStable();

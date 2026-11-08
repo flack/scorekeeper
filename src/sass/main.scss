@@ -1,44 +1,25 @@
+// Bootstrap: only the parts the app uses
+@import '../../node_modules/bootstrap/scss/functions';
 @import 'variables.scss';
-
-// Bootstrap without glyphicons, which are not used (icons come from Font Awesome)
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/print';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/code';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/tables';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/forms';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/buttons';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/component-animations';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/button-groups';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/input-groups';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/navs';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/navbar';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/pagination';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/pager';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/labels';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/badges';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/jumbotron';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/thumbnails';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/alerts';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/media';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/list-group';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/panels';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/wells';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/close';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/modals';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/tooltip';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/popovers';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/carousel';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/utilities';
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities';
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/variables-dark';
+@import '../../node_modules/bootstrap/scss/maps';
+@import '../../node_modules/bootstrap/scss/mixins';
+@import '../../node_modules/bootstrap/scss/utilities';
+@import '../../node_modules/bootstrap/scss/root';
+@import '../../node_modules/bootstrap/scss/reboot';
+@import '../../node_modules/bootstrap/scss/type';
+@import '../../node_modules/bootstrap/scss/containers';
+@import '../../node_modules/bootstrap/scss/grid';
+@import '../../node_modules/bootstrap/scss/tables';
+@import '../../node_modules/bootstrap/scss/forms';
+@import '../../node_modules/bootstrap/scss/buttons';
+@import '../../node_modules/bootstrap/scss/button-group';
+@import '../../node_modules/bootstrap/scss/nav';
+@import '../../node_modules/bootstrap/scss/navbar';
+@import '../../node_modules/bootstrap/scss/alert';
+@import '../../node_modules/bootstrap/scss/modal';
+@import '../../node_modules/bootstrap/scss/helpers';
 
 // Font Awesome without its _path partial, so only the woff2/woff fonts get
 // bundled (and precached by the service worker)
@@ -77,42 +58,24 @@ h2 {
 /**
  * Navigation
  */
+
 header {
-     background-color: $navbar-inverse-bg;
-     margin-bottom: $header-margin-bottom;
+  background-color: $header-bg;
+  margin-bottom: $header-margin-bottom;
 }
 
-.navbar {
-  margin-bottom: 0;
-  .nav li {
-       &.active .nav-label {
-           color: $navbar-inverse-link-hover-color;
-       }
-       &:hover .nav-label {
-           color: $navbar-inverse-link-hover-color;
-       }
-
-       @media (max-width: 420px) {
-        a {
-          text-align: center;
-          padding-top: 8px;
-          padding-bottom: 5px;
-          i {
-               font-size: 140%;
-          }
-          .nav-label {
-               font-size: 70%;
-               display: block;
-               color: $navbar-inverse-color;
-           }
-         }
-       }
-       @media (max-width: 330px) {
-        a {
-          padding-left: 13px;
-          padding-right: 13px;
-        }
-      }
+.navbar .nav-link {
+  @media (max-width: 420px) {
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    i {
+      font-size: 140%;
+    }
+    .nav-label {
+      font-size: 70%;
+      display: block;
+    }
   }
 }
 
@@ -131,26 +94,28 @@ header {
 }
 
 .toolbar-right {
-    float: right;
+  text-align: right;
 }
 
 
 /**
- * Confirmation dialog: a native <dialog> around Bootstrap's .modal-content
+ * Confirmation dialog: a native <dialog> styled as Bootstrap's .modal, around
+ * .modal-dialog and .modal-content. .modal is hidden by default, so the open
+ * attribute shows it, and the UA dialog box styles are reset so it covers the
+ * viewport like Bootstrap's modal. .modal-dialog lets clicks through
+ * (pointer-events: none), so clicks beside .modal-content hit the dialog.
  */
 
 dialog.confirm-dialog {
+  &[open] {
+    display: block;
+  }
+  max-width: none;
+  max-height: none;
+  margin: 0;
   border: none;
   padding: 0;
   background: transparent;
-  overflow: visible;
-  width: auto;
-  max-width: calc(100% - 20px);
-  margin: 30px auto;
-
-  @media (min-width: $screen-sm-min) {
-    width: $modal-md;
-  }
 
   &::backdrop {
     background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
@@ -177,6 +142,8 @@ dialog.confirm-dialog {
 }
 
 .drag-handle {
+  // Same border as the adjacent .form-control
+  --#{$prefix}btn-border-color: var(--#{$prefix}border-color);
   cursor: move;
   touch-action: none;
 }
@@ -184,3 +151,5 @@ dialog.confirm-dialog {
 @import 'animations.scss';
 @import '../app/home/home.scss';
 @import '../app/scores/scores.scss';
+@import '../app/players/players.scss';
+@import '../app/games/games.scss';
