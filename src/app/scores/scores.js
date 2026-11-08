@@ -19,8 +19,7 @@ angular.module( 'ngScorekeeper.scores', [
 
 .controller( 'ScoresCtrl', function HomeController( $scope, $localStorage ) {
     $scope.default_title = 'Untitled Game';
-    $scope.$storage = $localStorage.$default(
-    {
+    $scope.$storage = $localStorage.$default({
         games: [],
         players: [],
         title: $scope.default_title,
@@ -33,8 +32,7 @@ angular.module( 'ngScorekeeper.scores', [
     $scope.winners = [];
     $scope.running = false;
 
-    $scope.start = function()
-    {
+    $scope.start = function() {
         reset_totals();
         $scope.$storage.rows = [];
         $scope.$storage.finished = null;
@@ -44,8 +42,7 @@ angular.module( 'ngScorekeeper.scores', [
         $scope.running = true;
     };
 
-    $scope.resume = function()
-    {
+    $scope.resume = function() {
         $scope.$storage.games.shift();
         $scope.$storage.finished = null;
         $scope.winners = [];
@@ -53,8 +50,7 @@ angular.module( 'ngScorekeeper.scores', [
         $scope.new_row();
     };
 
-    $scope.abort = function()
-    {
+    $scope.abort = function() {
         reset_totals();
         $scope.$storage.started = null;
         $scope.$storage.finished = null;
@@ -62,33 +58,28 @@ angular.module( 'ngScorekeeper.scores', [
         $scope.running = false;
     };
 
-    $scope.finish = function()
-    {
+    $scope.finish = function() {
         $scope.$storage.finished = new Date();
         $scope.running = false;
-        var game =
-            {
-                title: angular.copy($scope.$storage.title),
-                started: angular.copy($scope.$storage.started),
-                finished: angular.copy($scope.$storage.finished),
-                players: angular.copy($scope.$storage.players),
-                totals: angular.copy($scope.totals)
-            };
+        var game = {
+            title: angular.copy($scope.$storage.title),
+            started: angular.copy($scope.$storage.started),
+            finished: angular.copy($scope.$storage.finished),
+            players: angular.copy($scope.$storage.players),
+            totals: angular.copy($scope.totals)
+        };
         $scope.$storage.games.unshift(game);
 
-        while ($scope.$storage.rows.length > 0 && is_row_empty(angular.copy($scope.$storage.rows[$scope.$storage.rows.length - 1])))
-        {
+        while ($scope.$storage.rows.length > 0 && is_row_empty(angular.copy($scope.$storage.rows[$scope.$storage.rows.length - 1]))) {
             $scope.$storage.rows.pop();
         }
 
         render_result();
     };
 
-    $scope.new_row = function()
-    {
+    $scope.new_row = function() {
         var row = {};
-        for (var i in $scope.$storage.players)
-        {
+        for (var i in $scope.$storage.players) {
             row[$scope.$storage.players[i].id] = '';
         }
 
@@ -96,100 +87,76 @@ angular.module( 'ngScorekeeper.scores', [
         $scope.focus_input = true;
     };
 
-    $scope.update_totals = function(player_id)
-    {
+    $scope.update_totals = function(player_id) {
         var player_total = 0;
-        for (var i in $scope.$storage.rows)
-        {
+        for (var i in $scope.$storage.rows) {
             player_total += parse_score($scope.$storage.rows[i][player_id]);
         }
         $scope.totals[player_id] = player_total;
     };
 
-    $scope.is_max = function(score, row)
-    {
+    $scope.is_max = function(score, row) {
         //copy to get rid of $$hashKey
         var copy = angular.copy(row),
             i;
-        if (is_row_empty(copy))
-        {
+        if (is_row_empty(copy)) {
             return false;
         }
-        for (i in copy)
-        {
-            if (parse_score(copy[i]) > parse_score(score))
-            {
+        for (i in copy) {
+            if (parse_score(copy[i]) > parse_score(score)) {
                 return false;
             }
         }
         return true;
     };
 
-    function is_row_empty(row)
-    {
-        for (var i in row)
-        {
-            if (parse_score(row[i]) !== 0)
-            {
+    function is_row_empty(row) {
+        for (var i in row) {
+            if (parse_score(row[i]) !== 0) {
                 return false;
             }
         }
         return true;
     }
 
-    function parse_score(score)
-    {
-        if (score === '')
-        {
+    function parse_score(score) {
+        if (score === '') {
             return 0;
         }
-        if (typeof score === 'string')
-        {
+        if (typeof score === 'string') {
             score = score.replace(/,/, '.');
         }
-        if (!isNaN(score))
-        {
+        if (!isNaN(score)) {
             return parseFloat(score, 10);
         }
         return 0;
     }
 
-    function init()
-    {
-        if ($scope.$storage.rows.length > 0)
-        {
-            for (var i in $scope.$storage.players)
-            {
+    function init() {
+        if ($scope.$storage.rows.length > 0) {
+            for (var i in $scope.$storage.players) {
                 $scope.update_totals($scope.$storage.players[i].id);
             }
         }
-        if ($scope.$storage.started && !$scope.$storage.finished)
-        {
+        if ($scope.$storage.started && !$scope.$storage.finished) {
             $scope.running = true;
         }
     }
 
-    function reset_totals()
-    {
-        for (var i in $scope.$storage.players)
-        {
+    function reset_totals() {
+        for (var i in $scope.$storage.players) {
             $scope.totals[$scope.$storage.players[i].id] = 0;
         }
     }
 
-    function render_result()
-    {
+    function render_result() {
         var highscore = 0,
             winners = [];
-        for (var i in $scope.$storage.players)
-        {
-            if ($scope.totals[$scope.$storage.players[i].id] > highscore)
-            {
+        for (var i in $scope.$storage.players) {
+            if ($scope.totals[$scope.$storage.players[i].id] > highscore) {
                 highscore = $scope.totals[$scope.$storage.players[i].id];
                 winners = [$scope.$storage.players[i].id];
-            }
-            else if ($scope.totals[$scope.$storage.players[i].id] === highscore)
-            {
+            } else if ($scope.totals[$scope.$storage.players[i].id] === highscore) {
                 winners.push($scope.$storage.players[i].id);
             }
         }
@@ -221,8 +188,7 @@ angular.module( 'ngScorekeeper.scores', [
         }
       });
       element.bind('blur', function() {
-          if (model.assign)
-          {
+          if (model.assign) {
               scope.$apply(model.assign(scope, false));
           }
       });
@@ -234,14 +200,12 @@ angular.module( 'ngScorekeeper.scores', [
       restrict: 'A',
       require: '?ngModel',
       link: function(scope, element, attrs, ngModel) {
-          if (!ngModel)
-          {
+          if (!ngModel) {
               return;
           }
 
           ngModel.$render = function() {
-              if (element.text() !== ngModel.$viewValue)
-              {
+              if (element.text() !== ngModel.$viewValue) {
                   element.text(ngModel.$viewValue || scope.default_title);
               }
           };
@@ -254,8 +218,7 @@ angular.module( 'ngScorekeeper.scores', [
           function read() {
               var title = $.trim(element.text());
               title = title.replace(/<br>/g, '');
-              if (title === '')
-              {
+              if (title === '') {
                   title = scope.default_title;
               }
               ngModel.$setViewValue(title);
@@ -264,30 +227,22 @@ angular.module( 'ngScorekeeper.scores', [
       }
     };
 })
-.filter('playername', ['$localStorage', function($localStorage)
-{
-    return function (input)
-    {
-        for (var i in $localStorage.players)
-        {
-            if ($localStorage.players[i].id === input)
-            {
+.filter('playername', ['$localStorage', function($localStorage) {
+    return function (input) {
+        for (var i in $localStorage.players) {
+            if ($localStorage.players[i].id === input) {
                 return $localStorage.players[i].name;
             }
         }
         return input + ' not found';
     };
 }])
-.filter('playernames', ['$localStorage', function($localStorage)
-{
-    return function (input)
-    {
+.filter('playernames', ['$localStorage', function($localStorage) {
+    return function (input) {
         var names = [],
             i;
-        for (i in $localStorage.players)
-        {
-            if (input.indexOf($localStorage.players[i].id) !== -1)
-            {
+        for (i in $localStorage.players) {
+            if (input.indexOf($localStorage.players[i].id) !== -1) {
                 names.push($localStorage.players[i].name);
             }
         }

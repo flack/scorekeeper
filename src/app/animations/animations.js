@@ -5,8 +5,7 @@ angular.module('ngScorekeeper.animations', [
 .animation('.delete-animation', function() {
 
     var speed = 250,
-    delete_animation = function(element, className, done)
-    {
+    delete_animation = function(element, className, done) {
         element.css({
             height: jQuery(element).innerHeight() + 'px',
             opacity: 1
@@ -32,11 +31,9 @@ angular.module('ngScorekeeper.animations', [
 
     var speed = 250,
 
-    wait = function(element, done)
-    {
+    wait = function(element, done) {
         jQuery(element).hide();
-        var promise = $timeout(function()
-        {
+        var promise = $timeout(function() {
             jQuery(element).show();
             done();
         }, speed);
@@ -47,19 +44,15 @@ angular.module('ngScorekeeper.animations', [
             }
         };
     },
-    add_animation = function(element, className, done)
-    {
-        if (className !== 'ng-show')
-        {
+    add_animation = function(element, className, done) {
+        if (className !== 'ng-show') {
             return;
         }
 
         return wait(element, done);
     },
-    remove_animation = function(element, className, done)
-    {
-        if (className !== 'ng-hide')
-        {
+    remove_animation = function(element, className, done) {
+        if (className !== 'ng-hide') {
             return;
         }
 
