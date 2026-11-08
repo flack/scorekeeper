@@ -1,0 +1,44 @@
+/**
+ * Animations, driven by the classes ngAnimate adds
+ */
+
+$animation-speed: 250ms;
+
+// Collapse and fade out ng-repeat items when they are removed. Animating the
+// grid row from 1fr to 0fr shrinks the element from its real height without
+// having to know it. This needs the element to have a single child that is
+// not a table (like .input-group), as tables do not shrink below their content.
+.delete-animation.ng-leave {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition: grid-template-rows $animation-speed, opacity $animation-speed, margin $animation-speed;
+
+  > * {
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &.ng-leave-active {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+// When ng-show reveals the element, keep it out of the layout for one
+// animation length, so it only appears after a .delete-animation finished.
+.show-after-animation.ng-hide-remove {
+  animation: show-after $animation-speed;
+}
+
+@keyframes show-after {
+  from, to {
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}

@@ -20,6 +20,7 @@
 <div class="container">
 <h1>Games</h1>
 <div class="game-table delete-animation" ng-repeat="game in $storage.games">
+<div>
   <h3>{{game.title || 'Untitled Game'}} <small>{{game.started | amCalendar}}</small>
   <div class="toolbar-right">
     <button class="btn btn-danger" ng-click="open($index)"><i
@@ -42,5 +43,6 @@
         </tr>
       </tbody>
   </table>
+</div>
 </div>
 </div>

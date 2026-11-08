@@ -4,7 +4,7 @@ angular.module( 'ngScorekeeper', [
     'ngScorekeeper.players',
     'ngScorekeeper.scores',
     'ngScorekeeper.games',
-    'ngScorekeeper.animations',
+    'ngAnimate',
     'ui.bootstrap',
     'ui.router'
 ])
