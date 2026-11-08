@@ -66,7 +66,7 @@ module.exports = {
         'node_modules/moment/min/moment-with-locales.min.js',
         'node_modules/angular-moment/angular-moment.min.js',
         'node_modules/angular-animate/angular-animate.min.js',
-        'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
+        'node_modules/@rwap/jquery-ui-touch-punch/jquery.ui.touch-punch.js',
         'node_modules/ngstorage/ngStorage.min.js'
     ],
     css: [
