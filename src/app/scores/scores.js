@@ -18,7 +18,7 @@ angular.module( 'ngScorekeeper.scores', [
   });
 })
 
-.controller( 'ScoresCtrl', function HomeController( $scope, $localStorage ) {
+.controller( 'ScoresCtrl', function ScoresController( $scope, $localStorage ) {
     $scope.default_title = 'Untitled Game';
     $scope.$storage = $localStorage.$default({
         games: [],
