@@ -105,17 +105,11 @@ angular.module( 'ngScorekeeper.scores', [
         return Object.values(row).every(value => parse_score(value) === 0);
     }
 
+    // Accepts numbers and numeric strings (with ',' or '.' as decimal
+    // separator); anything else, including empty input, counts as 0
     function parse_score(score) {
-        if (score === '') {
-            return 0;
-        }
-        if (typeof score === 'string') {
-            score = score.replace(/,/, '.');
-        }
-        if (!isNaN(score)) {
-            return parseFloat(score, 10);
-        }
-        return 0;
+        const value = Number(String(score).trim().replace(',', '.'));
+        return Number.isFinite(value) ? value : 0;
     }
 
     function init() {

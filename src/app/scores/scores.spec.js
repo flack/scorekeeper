@@ -72,6 +72,12 @@ describe( 'scores section', function() {
             expect( scope.totals.player1 ).toBe( 2.75 );
         });
 
+        it( 'should treat blank, missing and non-finite input as zero', function() {
+            scope.$storage.rows.push( { player1: ' ' }, { player1: ' 3 ' }, { player1: 'Infinity' }, { player1: null }, {} );
+            scope.update_totals( 'player1' );
+            expect( scope.totals.player1 ).toBe( 3 );
+        });
+
         it( 'should find the maximum in row', function() {
             scope.$storage.players.push( { 'id': 'player1', 'name': 'Player 1' } );
             const row = { player1: '4', player2: '3.5' };
