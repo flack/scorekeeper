@@ -56,11 +56,9 @@ angular.module( 'ngScorekeeper.players', [
     };
 
     $scope.remove_player = function(player) {
-        for (const i in $scope.$storage.players) {
-            if ($scope.$storage.players[i].id === player.id) {
-                $scope.$storage.players.splice(i, 1);
-                break;
-            }
+        const index = $scope.$storage.players.findIndex(existing => existing.id === player.id);
+        if (index !== -1) {
+            $scope.$storage.players.splice(index, 1);
         }
     };
 

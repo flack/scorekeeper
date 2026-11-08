@@ -80,8 +80,8 @@ angular.module( 'ngScorekeeper.scores', [
 
     $scope.new_row = function() {
         const row = {};
-        for (const i in $scope.$storage.players) {
-            row[$scope.$storage.players[i].id] = '';
+        for (const player of $scope.$storage.players) {
+            row[player.id] = '';
         }
 
         $scope.$storage.rows.push(row);
@@ -89,11 +89,7 @@ angular.module( 'ngScorekeeper.scores', [
     };
 
     $scope.update_totals = function(player_id) {
-        let player_total = 0;
-        for (const i in $scope.$storage.rows) {
-            player_total += parse_score($scope.$storage.rows[i][player_id]);
-        }
-        $scope.totals[player_id] = player_total;
+        $scope.totals[player_id] = $scope.$storage.rows.reduce((total, row) => total + parse_score(row[player_id]), 0);
     };
 
     $scope.is_max = function(score, row) {
@@ -102,21 +98,11 @@ angular.module( 'ngScorekeeper.scores', [
         if (is_row_empty(copy)) {
             return false;
         }
-        for (const i in copy) {
-            if (parse_score(copy[i]) > parse_score(score)) {
-                return false;
-            }
-        }
-        return true;
+        return !Object.values(copy).some(value => parse_score(value) > parse_score(score));
     };
 
     function is_row_empty(row) {
-        for (const i in row) {
-            if (parse_score(row[i]) !== 0) {
-                return false;
-            }
-        }
-        return true;
+        return Object.values(row).every(value => parse_score(value) === 0);
     }
 
     function parse_score(score) {
@@ -134,8 +120,8 @@ angular.module( 'ngScorekeeper.scores', [
 
     function init() {
         if ($scope.$storage.rows.length > 0) {
-            for (const i in $scope.$storage.players) {
-                $scope.update_totals($scope.$storage.players[i].id);
+            for (const player of $scope.$storage.players) {
+                $scope.update_totals(player.id);
             }
         }
         if ($scope.$storage.started && !$scope.$storage.finished) {
@@ -144,20 +130,20 @@ angular.module( 'ngScorekeeper.scores', [
     }
 
     function reset_totals() {
-        for (const i in $scope.$storage.players) {
-            $scope.totals[$scope.$storage.players[i].id] = 0;
+        for (const player of $scope.$storage.players) {
+            $scope.totals[player.id] = 0;
         }
     }
 
     function render_result() {
         let highscore = -Infinity;
         let winners = [];
-        for (const i in $scope.$storage.players) {
-            if ($scope.totals[$scope.$storage.players[i].id] > highscore) {
-                highscore = $scope.totals[$scope.$storage.players[i].id];
-                winners = [$scope.$storage.players[i].id];
-            } else if ($scope.totals[$scope.$storage.players[i].id] === highscore) {
-                winners.push($scope.$storage.players[i].id);
+        for (const {id} of $scope.$storage.players) {
+            if ($scope.totals[id] > highscore) {
+                highscore = $scope.totals[id];
+                winners = [id];
+            } else if ($scope.totals[id] === highscore) {
+                winners.push(id);
             }
         }
         $scope.winners = winners;
@@ -229,22 +215,15 @@ angular.module( 'ngScorekeeper.scores', [
 })
 .filter('playername', ['$localStorage', function($localStorage) {
     return function (input) {
-        for (const i in $localStorage.players) {
-            if ($localStorage.players[i].id === input) {
-                return $localStorage.players[i].name;
-            }
-        }
-        return input + ' not found';
+        const player = ($localStorage.players || []).find(candidate => candidate.id === input);
+        return player ? player.name : input + ' not found';
     };
 }])
 .filter('playernames', ['$localStorage', function($localStorage) {
     return function (input) {
-        const names = [];
-        for (const i in $localStorage.players) {
-            if (input.indexOf($localStorage.players[i].id) !== -1) {
-                names.push($localStorage.players[i].name);
-            }
-        }
-        return names.join(', ');
+        return ($localStorage.players || [])
+            .filter(player => input.includes(player.id))
+            .map(player => player.name)
+            .join(', ');
     };
 }]);
