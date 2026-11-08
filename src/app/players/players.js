@@ -21,8 +21,33 @@ angular.module( 'ngScorekeeper.players', [
     $scope.$storage = $localStorage.$default({players: []});
     $scope.player = {};
 
+    // Ids must never be reused: score rows are keyed by player id, so a new
+    // player must not take the id of a removed one that still has scores in
+    // the current game
+    function next_player_id() {
+        var highest = -1;
+
+        function check(id) {
+            var match = /^player(\d+)$/.exec(id);
+            if (match) {
+                highest = Math.max(highest, parseInt(match[1], 10));
+            }
+        }
+
+        angular.forEach($scope.$storage.players, function(existing) {
+            check(existing.id);
+        });
+        angular.forEach($localStorage.rows, function(row) {
+            angular.forEach(row, function(score, id) {
+                check(id);
+            });
+        });
+
+        return 'player' + (highest + 1);
+    }
+
     $scope.add_player = function(player) {
-        player.id = 'player' + $scope.$storage.players.length;
+        player.id = next_player_id();
         $scope.$storage.players.push(angular.copy(player));
         $scope.player.name = '';
         if ($scope.addPlayer) {
