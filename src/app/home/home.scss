@@ -32,3 +32,15 @@
       bottom: 10px;
   }
 }
+
+.link-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--#{$prefix}link-color);
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--#{$prefix}link-hover-color);
+  }
+}

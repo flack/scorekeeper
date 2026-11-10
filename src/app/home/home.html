@@ -1,3 +1,55 @@
+<dialog #installHelp class="modal confirm-dialog" aria-labelledby="install-help-title"
+  (click)="backdropClick($event)">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="install-help-title">Add to Home Screen</h3>
+      </div>
+      <div class="modal-body">
+        @switch (platform) {
+          @case ('installed') {
+            <p>You are already using the installed app, hurray!</p>
+          }
+          @case ('ios') {
+            <ol>
+              <li>Tap the <i class="fa fa-share-square-o"></i> <strong>Share</strong> button in the browser's toolbar.</li>
+              <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
+              <li>Tap <strong>Add</strong>.</li>
+            </ol>
+          }
+          @case ('android') {
+            <ol>
+              <li>Open the browser's menu (<i class="fa fa-ellipsis-v"></i>).</li>
+              <li>Tap <strong>Add to Home screen</strong> or <strong>Install app</strong>.</li>
+              <li>Confirm with <strong>Add</strong> or <strong>Install</strong>.</li>
+            </ol>
+          }
+          @case ('mac-safari') {
+            <ol>
+              <li>Open the <strong>File</strong> menu, or the <i class="fa fa-share-square-o"></i> <strong>Share</strong> button.</li>
+              <li>Choose <strong>Add to Dock</strong>.</li>
+            </ol>
+          }
+          @default {
+            <p>
+              In Chrome or Edge, click the install icon at the right end of the address bar,
+              or open the browser's menu and choose <strong>Install scorekeeper</strong>
+              (in Chrome under <strong>Cast, save and share</strong>).
+            </p>
+            <p>
+              Not every browser can install web apps. Even without installing,
+              scorekeeper keeps working offline once it has been opened. So don't close that tab!
+            </p>
+          }
+        }
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" (click)="close()" autofocus>OK</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
 <div class="intro">
   <div class="jumbotron">
   <h1>Someone has got to do it</h1>
@@ -78,7 +130,9 @@
     <div class="col-12 col-sm-6 col-md-4">
       <h4><i class="fa fa-plane"></i> Offline Capable</h4>
       <p>
-         Can be added to your home screen and will from then on
+         Can be added to your
+         <button type="button" class="link-button" (click)="addToHomeScreen()">home screen</button>
+         and will from then on
          work even when you have no connection
       </p>
     </div>
