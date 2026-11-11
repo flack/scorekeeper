@@ -1,7 +1,7 @@
 {
   "author": "Andreas Flack",
   "name": "scorekeeper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "homepage": "https://flack.github.io/scorekeeper",
   "bugs": "https://github.com/flack/scorekeeper/issues",
