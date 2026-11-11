@@ -17,7 +17,8 @@
     "test": "ng test --watch=false",
     "coverage": "ng test --watch=false --coverage",
     "deploy": "ng build && gh-pages --dist dist --nojekyll",
-    "release": "npm version patch -m \"release v%s\" && git push --follow-tags"
+    "release": "npm version -m \"release v%s\"",
+    "postversion": "git push --follow-tags"
   },
   "dependencies": {
     "@angular/cdk": "^21.2.14",
