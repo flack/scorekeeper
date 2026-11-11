@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1794426187205,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/favicon.png",
+        "/index.html",
+        "/main-RXQIUG6R.js",
+        "/manifest.webmanifest",
+        "/media/fontawesome-webfont-5GKVPAEF.woff2",
+        "/media/fontawesome-webfont-Z4ARLA73.woff",
+        "/media/home-bg-S4NT7O72.jpg",
+        "/styles-VDEQ3XKI.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/apple-touch-icon-120x120.png",
+        "/assets/apple-touch-icon-152x152.png",
+        "/assets/apple-touch-icon-76x76.png",
+        "/assets/apple-touch-icon.png",
+        "/assets/icon-192x192.png",
+        "/assets/icon-512x512.png",
+        "/assets/scorekeeper.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/apple-touch-icon-120x120.png": "065f4c01919a8977872f9c532411724e23342d4e",
+    "/assets/apple-touch-icon-152x152.png": "965cecfba3fc8e4f6a3f373afe746644bff4782b",
+    "/assets/apple-touch-icon-76x76.png": "f74b81aa5a4511a82ac54aaafe9d3c4cda851a7c",
+    "/assets/apple-touch-icon.png": "e23e3f49d1bfd252bd6177468390f2b7daedc82d",
+    "/assets/favicon.png": "df547482ffe85d2943d2277e2fc45e479a653fd7",
+    "/assets/icon-192x192.png": "611e2b24b67e5db564e0d62981174bf945837bde",
+    "/assets/icon-512x512.png": "b92b196dcaeafe8f6734826c47a63e40b7e54b0c",
+    "/assets/scorekeeper.jpg": "0c7558657c3ea2cbea3e4b957ed323381e41df3f",
+    "/index.html": "f94bd4fd5ea301ea8a6c2b60e1cfc2ddab2a0f6b",
+    "/main-RXQIUG6R.js": "9f4961a739f9cc8b74cc3def1636820348ba1c4a",
+    "/manifest.webmanifest": "beb97481f1bdc7688bd48ae68b205d277f3678e5",
+    "/media/fontawesome-webfont-5GKVPAEF.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
+    "/media/fontawesome-webfont-Z4ARLA73.woff": "28b782240b3e76db824e12c02754a9731a167527",
+    "/media/home-bg-S4NT7O72.jpg": "b5fcc3e47e60eabe8cfa280da9dc8b7de206d22a",
+    "/styles-VDEQ3XKI.css": "18e8d29d7e2e20c4ca24012453e16362c63166d8"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
