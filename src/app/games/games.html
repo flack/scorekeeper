@@ -36,7 +36,7 @@
           <thead>
             <tr>
               @for (player of game.players; track player.id) {
-                <th>{{ player.name }}</th>
+                <th [class.table-success]="isWinner(game, player.id)">{{ player.name }}</th>
               }
             </tr>
           </thead>

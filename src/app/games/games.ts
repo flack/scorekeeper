@@ -32,6 +32,11 @@ export class Games {
         this.dialog().nativeElement.close();
     }
 
+    /** Whether the player has the highest total of the game (ties highlight every winner) */
+    protected isWinner(game: Game, playerId: string): boolean {
+        return game.totals[playerId] === Math.max(...Object.values(game.totals));
+    }
+
     /** Clicks on the dialog element itself (not its content) hit the backdrop */
     protected backdropClick(event: MouseEvent): void {
         if (event.target === event.currentTarget) {

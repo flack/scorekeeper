@@ -5,6 +5,9 @@
   gap: $spacer;
 
   small {
+    display: block;
+    font-size: .6em;
+    font-weight: normal;
     color: var(--#{$prefix}secondary-color);
   }
 }

@@ -53,6 +53,16 @@ describe('Games', () => {
         expect(totals.map(cell => cell.textContent?.trim())).toEqual(['7', '6']);
     });
 
+    it('should highlight the winners', async () => {
+        storage.games[1].totals = { player0: 5, player1: 5 };
+        fixture.componentRef.changeDetectorRef.markForCheck();
+        await fixture.whenStable();
+        const highlighted = (index: number) => Array.from(element.querySelectorAll('.game-table')[index].querySelectorAll('thead th'))
+            .map(cell => cell.classList.contains('table-success'));
+        expect(highlighted(0)).toEqual([true, false]);
+        expect(highlighted(1)).toEqual([true, true]);
+    });
+
     it('should open the confirmation dialog for the selected game', async () => {
         await openDialog(1);
         expect(dialog.showModal).toHaveBeenCalled();
