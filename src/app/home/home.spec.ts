@@ -4,8 +4,7 @@ import { BeforeInstallPromptEvent, InstallService } from '../shared/install.serv
 import { Home } from './home';
 
 describe('Home', () => {
-    function create(online: boolean): ComponentFixture<Home> {
-        vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(online);
+    function create(): ComponentFixture<Home> {
         TestBed.configureTestingModule({ providers: [provideRouter([])] });
         const fixture = TestBed.createComponent(Home);
         fixture.detectChanges();
@@ -16,21 +15,13 @@ describe('Home', () => {
         vi.restoreAllMocks();
     });
 
-    it('should show the social buttons when online', () => {
-        expect(create(true).nativeElement.querySelector('.social-buttons')).not.toBeNull();
-    });
-
-    it('should hide the social buttons when offline', () => {
-        expect(create(false).nativeElement.querySelector('.social-buttons')).toBeNull();
-    });
-
     describe('home screen link', () => {
         let fixture: ComponentFixture<Home>;
         let element: HTMLElement;
         let dialog: HTMLDialogElement;
 
         function setUp(): void {
-            fixture = create(false);
+            fixture = create();
             element = fixture.nativeElement;
             // jsdom has no modal dialogs
             dialog = element.querySelector('dialog')!;

@@ -1,4 +1,4 @@
-import { Component, DOCUMENT, ElementRef, inject, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { InstallPlatform, InstallService } from '../shared/install.service';
 
@@ -8,9 +8,6 @@ import { InstallPlatform, InstallService } from '../shared/install.service';
     templateUrl: './home.html'
 })
 export class Home {
-    /** The social buttons are external iframes, so only show them when online */
-    protected readonly online = inject(DOCUMENT).defaultView?.navigator.onLine ?? false;
-
     private readonly install = inject(InstallService);
     private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('installHelp');
     /** The instructions shown in the dialog */
