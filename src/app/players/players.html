@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Manage Players</h1>
   @if (storage.players.length === 0) {
-    <p class="show-after-animation" animate.enter="appearing">No players defined</p>
+    <p [class.show-after-animation]="playerRemoved" animate.enter="appearing">No players defined</p>
   }
   <div cdkDropList (cdkDropListDropped)="reorder($event)">
     @for (player of storage.players; track player.id) {

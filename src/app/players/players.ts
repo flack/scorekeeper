@@ -12,6 +12,11 @@ export class Players {
     protected readonly storage = inject(StorageService);
     /** Model of the "Add Player" form */
     name = '';
+    /**
+     * Whether a player was removed on this page. Only then does "No players
+     * defined" wait for the removal animation before appearing
+     */
+    playerRemoved = false;
 
     addPlayer(name: string, form?: NgForm): void {
         if (form?.invalid) {
@@ -28,6 +33,7 @@ export class Players {
         if (index !== -1) {
             this.storage.players.splice(index, 1);
             this.storage.save();
+            this.playerRemoved = true;
         }
     }
 
