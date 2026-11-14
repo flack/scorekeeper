@@ -1,10 +1,15 @@
 .intro {
   background-image: url('home-bg.jpg');
   background-size: cover;
-  padding: 40px 0;
+  background-position: center;
+  // Fill the viewport; the fixed header lies on top of it
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $header-height 0 40px;
   margin-bottom: 80px;
-  margin-top: -$header-margin-bottom;
-  position: relative;
 }
 
 .jumbotron {
@@ -24,6 +29,26 @@
     line-height: 1.25;
     margin: 0 auto 1.5em auto;
     max-width: 800px
+  }
+}
+
+// One button per row, equally wide; full width on phones
+.home-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  .btn {
+    min-width: 260px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    align-items: stretch;
+
+    .btn {
+      min-width: 0;
+    }
   }
 }
 

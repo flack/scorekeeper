@@ -62,6 +62,22 @@ h2 {
 header {
   background-color: $header-bg;
   margin-bottom: $header-margin-bottom;
+
+  // Home page: over the background image, transparent until the page is scrolled
+  &.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: $zindex-fixed;
+    margin-bottom: 0;
+    background-color: transparent;
+    transition: background-color .3s;
+
+    &.scrolled {
+      background-color: $header-bg;
+    }
+  }
 }
 
 .navbar .nav-link {

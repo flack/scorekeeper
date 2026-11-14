@@ -1,6 +1,8 @@
 $header-bg: rgba(0, 0, 0, .8);
 
 $header-margin-bottom: 20px;
+// Height of the navbar, which the home page's fixed header covers
+$header-height: 56px;
 
 // table-group-divider in the same color as the other cell borders (default: currentcolor)
 $table-group-separator-color: var(--bs-table-border-color);
