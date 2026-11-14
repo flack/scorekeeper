@@ -1,13 +1,14 @@
 <div class="container">
 
-  <h1 skEditableTitle [(title)]="storage.title" (titleChange)="titleChanged()" [fallback]="defaultTitle"></h1>
+  <h1 class="scores-heading">
+    <span class="title" skEditableTitle [(title)]="storage.title" (titleChange)="titleChanged()" [fallback]="defaultTitle"></span>
+    @if (running) {
+      <span class="started">started {{ storage.started | timeAgo: now() }}</span>
+    }
+  </h1>
 
   @if (storage.players.length === 0) {
     <div class="alert alert-danger" role="alert">You have to <a class="alert-link" routerLink="/players">add some players</a> for this to work!</div>
-  }
-
-  @if (running) {
-    <p>started {{ storage.started | timeAgo: now() }}</p>
   }
 
   <div class="scores-table">

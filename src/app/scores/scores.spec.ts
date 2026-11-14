@@ -351,7 +351,7 @@ describe('Scores', () => {
         });
 
         it('should save the edited title', async () => {
-            const title = element.querySelector('h1')!;
+            const title = element.querySelector<HTMLElement>('h1 .title')!;
             expect(title.textContent).toBe('Untitled Game');
             title.textContent = 'Skat';
             title.dispatchEvent(new Event('blur'));
